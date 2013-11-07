@@ -17,6 +17,26 @@ Ext.extend(Marvin.panel.Category,MODx.panel.Resource,{
 
     ,getFields: function(config) {
         var it = [];
+
+        if (config.mode == 'update') {
+            it.push({
+                title: _('marvin.category.locations')
+                ,id: 'marvin-category-locations'
+                ,cls: 'modx-resource-tab'
+                ,layout: 'form'
+                ,labelAlign: 'top'
+                ,labelSeparator: ''
+                ,bodyCssClass: 'tab-panel-wrapper main-wrapper'
+                ,autoHeight: true
+                ,defaults: {
+                    border: false
+                    ,msgTarget: 'under'
+                    ,width: 400
+                }
+                ,items: this.getLocationsTab(config)
+            });
+        }
+
         it.push({
             title: _('marvin.system.type_name')
             ,id: 'modx-resource-settings'
@@ -83,6 +103,15 @@ Ext.extend(Marvin.panel.Category,MODx.panel.Resource,{
             ,animCollapse: false
             ,itemId: 'tabs'
             ,items: it
+            ,listeners: {
+                'tabchange': function(tabs, tab) {
+                    if (tab.id == 'marvin-category-locations') {
+                        Ext.getCmp('modx-resource-content').hide();
+                    } else {
+                        Ext.getCmp('modx-resource-content').show();
+                    }
+                }
+            }
         });
         var ct = this.getContentField(config);
         if (ct) {
@@ -112,6 +141,14 @@ Ext.extend(Marvin.panel.Category,MODx.panel.Resource,{
             ,fieldLabel: _('marvin.category.color')
             ,description: _('marvin.category.color_help')
             ,name: 'color'
+        }];
+    }
+
+    ,getLocationsTab: function(config) {
+        return [{
+            'xtype': 'marvin-grid-locations'
+            ,url: Marvin.connectorUrl
+            ,anchor: '100%'
         }];
     }
 

@@ -27,6 +27,7 @@ class MarvinCategoryUpdateManagerController extends ResourceUpdateManagerControl
         $this->addJavascript($marvinJsUrl.'marvin.js');
         $this->addLastJavascript($marvinJsUrl.'sections/category/update.js');
         $this->addLastJavascript($marvinJsUrl.'widgets/category/marvin.panel.category.js');
+        $this->addLastJavascript($marvinJsUrl.'widgets/location/marvin.grid.locations.js');
 
         $this->loadExtendedFields();
 
