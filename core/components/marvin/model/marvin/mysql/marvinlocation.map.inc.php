@@ -50,7 +50,7 @@ $xpdo_meta_map['MarvinLocation']= array (
   ),
   'composites' => 
   array (
-    'Locations' => 
+    'Feedback' =>
     array (
       'class' => 'MarvinFeedback',
       'local' => 'id',

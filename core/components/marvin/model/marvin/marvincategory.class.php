@@ -3,6 +3,9 @@ require_once MODX_CORE_PATH.'model/modx/modprocessor.class.php';
 require_once MODX_CORE_PATH.'model/modx/processors/resource/create.class.php';
 require_once MODX_CORE_PATH.'model/modx/processors/resource/update.class.php';
 /**
+ * @property MarvinCategoryExtendedFields $ExtendedFields
+ * @property MarvinLocationCategory $CategoryLocations
+ *
  * @package marvin
  */
 class MarvinCategory extends modResource {
@@ -32,6 +35,9 @@ class MarvinCategory extends modResource {
 }
 
 class MarvinCategoryCreateProcessor extends modResourceCreateProcessor {
+    /** @var MarvinCategory $object */
+    public $object;
+
     public function beforeSave() {
         /** @var MarvinCategoryExtendedFields $categoryExtendedFields */
         $categoryExtendedFields = $this->modx->newObject('MarvinCategoryExtendedFields');
@@ -45,6 +51,9 @@ class MarvinCategoryCreateProcessor extends modResourceCreateProcessor {
 }
 
 class MarvinCategoryUpdateProcessor extends modResourceUpdateProcessor {
+    /** @var MarvinCategory $object */
+    public $object;
+
     public function beforeSave() {
         /** @var MarvinCategoryExtendedFields $categoryExtendedFields */
         $categoryExtendedFields = $this->object->ExtendedFields;
