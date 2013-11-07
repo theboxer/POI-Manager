@@ -45,4 +45,14 @@ class MarvinCategoryCreateProcessor extends modResourceCreateProcessor {
 }
 
 class MarvinCategoryUpdateProcessor extends modResourceUpdateProcessor {
+    public function beforeSave() {
+        /** @var MarvinCategoryExtendedFields $categoryExtendedFields */
+        $categoryExtendedFields = $this->object->ExtendedFields;
+
+        $categoryExtendedFields->fromArray($this->getProperties());
+
+        $this->object->addOne($categoryExtendedFields, 'ExtendedFields');
+
+        return parent::beforeSave();
+    }
 }

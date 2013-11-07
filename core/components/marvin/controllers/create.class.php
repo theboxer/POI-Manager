@@ -21,7 +21,7 @@ class MarvinCategoryCreateManagerController extends ResourceCreateManagerControl
         $mgrUrl = $this->modx->getOption('manager_url',null,MODX_MANAGER_URL);
         $marvinAssetsUrl = $this->modx->getOption('marvin.assets_url',null,$this->modx->getOption('assets_url',null,MODX_ASSETS_URL).'components/marvin/');
         $connectorUrl = $marvinAssetsUrl.'connector.php';
-        $newsletterJsUrl = $marvinAssetsUrl.'js/mgr/';
+        $marvinJsUrl = $marvinAssetsUrl.'js/mgr/';
 
         $this->addJavascript($mgrUrl.'assets/modext/util/datetime.js');
         $this->addJavascript($mgrUrl.'assets/modext/widgets/element/modx.panel.tv.renders.js');
@@ -30,9 +30,9 @@ class MarvinCategoryCreateManagerController extends ResourceCreateManagerControl
         $this->addJavascript($mgrUrl.'assets/modext/widgets/resource/modx.panel.resource.js');
         $this->addJavascript($mgrUrl.'assets/modext/sections/resource/create.js');
 
-        $this->addJavascript($newsletterJsUrl.'marvin.js');
-        $this->addLastJavascript($newsletterJsUrl.'sections/category/create.js');
-        $this->addLastJavascript($newsletterJsUrl.'widgets/category/marvin.panel.category.js');
+        $this->addJavascript($marvinJsUrl.'marvin.js');
+        $this->addLastJavascript($marvinJsUrl.'sections/category/create.js');
+        $this->addLastJavascript($marvinJsUrl.'widgets/category/marvin.panel.category.js');
 
         $this->addHtml('
         <script type="text/javascript">
