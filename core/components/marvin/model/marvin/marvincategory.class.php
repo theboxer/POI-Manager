@@ -1,4 +1,7 @@
 <?php
+require_once MODX_CORE_PATH.'model/modx/modprocessor.class.php';
+require_once MODX_CORE_PATH.'model/modx/processors/resource/create.class.php';
+require_once MODX_CORE_PATH.'model/modx/processors/resource/update.class.php';
 /**
  * @package marvin
  */
@@ -17,13 +20,29 @@ class MarvinCategory extends modResource {
     public function getContextMenuText() {
         $this->xpdo->lexicon->load('marvin:default');
         return array(
-            'text_create' => $this->xpdo->lexicon('marvin.text_create'),
-            'text_create_here' => $this->xpdo->lexicon('marvin.text_create_here'),
+            'text_create' => $this->xpdo->lexicon('marvin.system.text_create'),
+            'text_create_here' => $this->xpdo->lexicon('marvin.system.text_create_here'),
         );
     }
 
     public function getResourceTypeName() {
         $this->xpdo->lexicon->load('marvin:default');
-        return $this->xpdo->lexicon('marvin.type_name');
+        return $this->xpdo->lexicon('marvin.system.type_name');
     }
+}
+
+class MarvinCategoryCreateProcessor extends modResourceCreateProcessor {
+    public function beforeSave() {
+        /** @var MarvinCategoryExtendedFields $categoryExtendedFields */
+        $categoryExtendedFields = $this->modx->newObject('MarvinCategoryExtendedFields');
+
+        $categoryExtendedFields->fromArray($this->getProperties());
+
+        $this->object->addOne($categoryExtendedFields, 'ExtendedFields');
+
+        return parent::beforeSave();
+    }
+}
+
+class MarvinCategoryUpdateProcessor extends modResourceUpdateProcessor {
 }
