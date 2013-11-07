@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="marvin" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="marvin">
+    <object class="MarvinCategory" extends="modResource">
+        <composite alias="CategoryLocations" class="MarvinLocationCategory" local="id" foreign="category" cardinality="many" owner="local" />
+        <composite alias="ExtendedFields" class="MarvinCategoryExtendedFields" local="id" foreign="category" cardinality="one" owner="local" />
+    </object>
+
+    <object class="MarvinCategoryExtendedFields" table="marvin_category_extended_fields" extends="xPDOSimpleObject">
+        <field key="icon" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="color" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="category" dbtype="int" precision="10" phptype="integer" null="false" />
+
+        <aggregate alias="Category" class="MarvinCategory" local="category" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="MarvinSimpleObject" extends="xPDOSimpleObject">
+        <field key="created" dbtype="int" precision="20" phptype="timestamp" null="false" default="" />
+        <field key="updated" dbtype="int" precision="20" phptype="timestamp" null="false" default="" />
+        <field key="updated_by" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="deleted" dbtype="int" precision="20" phptype="timestamp" null="false"/>
+
+        <aggregate alias="UpdatedBy" class="modUser" local="updated_by" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="MarvinLocation" table="marvin_locations" extends="MarvinSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="alias" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="state" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="type" dbtype="int" precision="10" phptype="integer" null="false" />
+
+        <aggregate alias="Type" class="MarvinLocationType" local="type" foreign="id" cardinality="one" owner="foreign" />
+
+        <composite alias="Locations" class="MarvinFeedback" local="id" foreign="location" cardinality="many" owner="local" />
+        <composite alias="Comments" class="MarvinComment" local="id" foreign="location" cardinality="many" owner="local" />
+        <composite alias="Photos" class="MarvinPhoto" local="id" foreign="location" cardinality="many" owner="local" />
+        <composite alias="LocationTags" class="MarvinLocationTag" local="id" foreign="tag" cardinality="many" owner="local" />
+        <composite alias="FieldValues" class="MarvinFieldValue" local="id" foreign="location" cardinality="many" owner="local" />
+    </object>
+
+    <object class="MarvinFeedback" table="marvin_feedback" extends="MarvinSimpleObject">
+        <field key="text" dbtype="text" phptype="string" null="false" default="" />
+        <field key="authors_name" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="authors_email" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="state" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="location" dbtype="int" precision="10" phptype="integer" null="false" default="" />
+
+        <aggregate alias="Location" class="MarvinLocation" local="location" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="MarvinComment" table="marvin_comments" extends="MarvinSimpleObject">
+        <field key="text" dbtype="text" phptype="string" null="false" default="" />
+        <field key="authors_name" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="authors_email" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="state" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="location" dbtype="int" precision="10" phptype="integer" null="false" default="" />
+
+        <aggregate alias="Location" class="MarvinLocation" local="location" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="MarvinPhoto" table="marvin_photos" extends="MarvinSimpleObject">
+        <field key="name" dbtype="string" precision="100" phptype="string" null="false" default="" />
+        <field key="description" dbtype="text" phptype="string" null="false" default="" />
+        <field key="file" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="authors_name" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="authors_email" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="location" dbtype="int" precision="10" phptype="integer" null="false" default="" />
+
+        <aggregate alias="Location" class="MarvinLocation" local="location" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="MarvinTag" table="marvin_tags" extends="xPDOSimpleObject">
+        <field key="tag" dbtype="string" precision="100" phptype="string" null="false" default="" />
+        <field key="context" dbtype="varchar" precision="100" phptype="string" null="false" default="web" index="index" />
+
+        <index alias="context" name="context" primary="false" unique="false" type="BTREE">
+            <column key="context" length="" collation="A" null="false" />
+        </index>
+
+        <aggregate alias="Context" class="modContext" local="context" foreign="key" owner="foreign" cardinality="one" />
+
+        <composite alias="TagLocations" class="MarvinLocationTag" local="id" foreign="location" cardinality="many" owner="local" />
+    </object>
+
+    <object class="MarvinLocationType" table="marvin_location_types" extends="MarvinSimpleObject">
+        <field key="name" dbtype="string" precision="100" phptype="string" null="false" />
+        <field key="description" dbtype="text" phptype="string" null="false" default="" />
+
+        <composite alias="Locations" class="MarvinLocation" local="id" foreign="type" cardinality="many" owner="local" />
+        <composite alias="Fields" class="MarvinField" local="id" foreign="location_type" cardinality="many" owner="local" />
+    </object>
+
+    <object class="MarvinField" table="marvin_fields" extends="MarvinSimpleObject">
+        <field key="name" dbtype="string" precision="100" phptype="string" null="false" />
+        <field key="type" dbtype="string" precision="100" phptype="string" null="false" default="textfield" />
+        <field key="default" dbtype="string" precision="100" phptype="string" null="false" default="" />
+        <field key="required" dbtype="tinyint" precision="1" phptype="integer" attributes="unsigned" null="false" default="0" />
+        <field key="read_only" dbtype="tinyint" precision="1" phptype="integer" attributes="unsigned" null="false" default="0" />
+        <field key="order" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+        <field key="location_type" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+
+        <aggregate alias="LocationType" class="MarvinLocationType" local="location_type" foreign="id" owner="foreign" cardinality="one" />
+
+        <composite alias="Locations" class="MarvinLocation" local="id" foreign="type" cardinality="many" owner="local" />
+        <composite alias="Values" class="MarvinFieldValue" local="id" foreign="field" cardinality="many" owner="local" />
+    </object>
+
+    <object class="MarvinFieldValue" table="marvin_field_values" extends="MarvinSimpleObject">
+        <field key="value" dbtype="string" precision="100" phptype="string" null="false" default="" />
+        <field key="location" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+        <field key="field" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+
+        <aggregate alias="Location" class="MarvinLocation" local="location" foreign="id" owner="foreign" cardinality="one" />
+        <aggregate alias="Field" class="MarvinField" local="field" foreign="id" owner="foreign" cardinality="one" />
+    </object>
+
+    <object class="MarvinLocationTag" table="marvin_locations_tags" extends="xPDOSimpleObject">
+        <field key="location" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
+        <field key="tag" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
+
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
+            <column key="location" length="" collation="A" null="false" />
+            <column key="tag" length="" collation="A" null="false" />
+        </index>
+
+        <aggregate alias="Location" class="MarvinLocation" local="location" foreign="id" owner="foreign" cardinality="one" />
+        <aggregate alias="Tag" class="MarvinTag" local="tag" foreign="id" owner="foreign" cardinality="one" />
+    </object>
+
+    <object class="MarvinLocationCategory" table="marvin_locations_categories" extends="xPDOSimpleObject">
+        <field key="location" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
+        <field key="category" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
+
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
+            <column key="location" length="" collation="A" null="false" />
+            <column key="category" length="" collation="A" null="false" />
+        </index>
+
+        <aggregate alias="Location" class="MarvinLocation" local="location" foreign="id" owner="foreign" cardinality="one" />
+        <aggregate alias="Category" class="MarvinCategory" local="category" foreign="id" owner="foreign" cardinality="one" />
+    </object>
+</model>

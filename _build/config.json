@@ -1,0 +1,26 @@
+{
+    "name": "Marvin"
+    ,"lowCaseName": "marvin"
+    ,"description": "Platform for managing POIs on map"
+    ,"author": "Jan Peca"
+    ,"version": "0.0.1"
+    ,"package":{
+
+    }
+    ,"database":{
+        "tables": [
+            "MarvinCategoryExtendedFields",
+            "MarvinLocation",
+            "MarvinFeedback",
+            "MarvinComment",
+            "MarvinPhoto",
+            "MarvinTag",
+            "MarvinLocationType",
+            "MarvinField",
+            "MarvinFieldValue",
+            "MarvinLocationTag",
+            "MarvinLocationCategory"
+        ]
+    }
+    ,"extensionPackage": {}
+}
