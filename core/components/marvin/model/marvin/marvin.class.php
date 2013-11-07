@@ -37,6 +37,7 @@ class Marvin {
         ),$config);
 
         $this->modx->addPackage('marvin',$this->config['modelPath']);
+        $this->modx->loadClass('MarvinSimpleObject');
         $this->modx->lexicon->load('marvin:default');
     }
 
