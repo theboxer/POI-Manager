@@ -8,8 +8,8 @@
 class MarvinLocationGetListProcessor extends modObjectGetListProcessor {
     public $classKey = 'MarvinLocation';
     public $languageTopics = array('marvin:default');
-//    public $defaultSortField = 'created';
-//    public $defaultSortDirection = 'DESC';
+    public $defaultSortField = 'created';
+    public $defaultSortDirection = 'DESC';
     public $objectType = 'marvin.locations';
 
     public function prepareQueryBeforeCount(xPDOQuery $c) {
