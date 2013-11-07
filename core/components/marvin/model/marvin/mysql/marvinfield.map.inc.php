@@ -21,14 +21,14 @@ $xpdo_meta_map['MarvinField']= array (
   array (
     'name' => 
     array (
-      'dbtype' => 'string',
+      'dbtype' => 'varchar',
       'precision' => '100',
       'phptype' => 'string',
       'null' => false,
     ),
     'type' => 
     array (
-      'dbtype' => 'string',
+      'dbtype' => 'varchar',
       'precision' => '100',
       'phptype' => 'string',
       'null' => false,
@@ -36,7 +36,7 @@ $xpdo_meta_map['MarvinField']= array (
     ),
     'default' => 
     array (
-      'dbtype' => 'string',
+      'dbtype' => 'varchar',
       'precision' => '100',
       'phptype' => 'string',
       'null' => false,

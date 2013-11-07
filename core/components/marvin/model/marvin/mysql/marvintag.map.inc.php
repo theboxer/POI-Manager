@@ -16,7 +16,7 @@ $xpdo_meta_map['MarvinTag']= array (
   array (
     'tag' => 
     array (
-      'dbtype' => 'string',
+      'dbtype' => 'varchar',
       'precision' => '100',
       'phptype' => 'string',
       'null' => false,

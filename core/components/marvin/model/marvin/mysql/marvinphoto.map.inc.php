@@ -20,7 +20,7 @@ $xpdo_meta_map['MarvinPhoto']= array (
   array (
     'name' => 
     array (
-      'dbtype' => 'string',
+      'dbtype' => 'varchar',
       'precision' => '100',
       'phptype' => 'string',
       'null' => false,

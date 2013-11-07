@@ -17,7 +17,7 @@ $xpdo_meta_map['MarvinFieldValue']= array (
   array (
     'value' => 
     array (
-      'dbtype' => 'string',
+      'dbtype' => 'varchar',
       'precision' => '100',
       'phptype' => 'string',
       'null' => false,
