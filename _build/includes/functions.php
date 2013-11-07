@@ -1,12 +1,13 @@
 <?php
 /**
- * Helper method for grabbing files
  *
- * @package bxrextra
+ * @package marvin
  * @subpackage build
  */
 
 /**
+ * Helper method for grabbing files
+ *
  * @param string $filename
  * @return mixed|string
  */

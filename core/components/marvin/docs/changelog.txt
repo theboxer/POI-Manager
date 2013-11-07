@@ -1,9 +1,5 @@
 Changelog for Marvin.
 
-Marvin 0.0.2
-==============
-- Added ability to sort grid by drag and drop.
-
 Marvin 0.0.1
 ==============
 - Initial release.
