@@ -17,13 +17,13 @@ class MarvinCategory extends modResource {
     public function getContextMenuText() {
         $this->xpdo->lexicon->load('marvin:default');
         return array(
-            'text_create' => 'marvin',
-            'text_create_here' => 'cerate marvin here',
+            'text_create' => $this->xpdo->lexicon('marvin.text_create'),
+            'text_create_here' => $this->xpdo->lexicon('marvin.text_create_here'),
         );
     }
 
     public function getResourceTypeName() {
         $this->xpdo->lexicon->load('marvin:default');
-        return 'Marvin';
+        return $this->xpdo->lexicon('marvin.type_name');
     }
 }
