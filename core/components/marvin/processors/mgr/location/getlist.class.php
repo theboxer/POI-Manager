@@ -19,6 +19,11 @@ class MarvinLocationGetListProcessor extends modObjectGetListProcessor {
                     'name:LIKE' => '%'.$query.'%',
                 ));
         }
+
+        $c->where(array(
+            'deleted' => 0
+        ));
+
         return $c;
     }
 }

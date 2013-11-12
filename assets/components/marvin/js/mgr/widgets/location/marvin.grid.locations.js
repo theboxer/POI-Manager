@@ -66,13 +66,13 @@ Ext.extend(Marvin.grid.Locations,MODx.grid.Grid,{
 //        });
         m.push('-');
         m.push({
-            text: _('marvin.item_remove')
-            ,handler: this.removeItem
+            text: _('marvin.location.delete')
+            ,handler: this.deleteLocation
         });
         this.addContextMenuItem(m);
     }
 
-    ,removeItem: function(btn,e) {
+    ,deleteLocation: function(btn,e) {
         if (!this.menu.record) return false;
 
         MODx.msg.confirm({
@@ -80,7 +80,7 @@ Ext.extend(Marvin.grid.Locations,MODx.grid.Grid,{
             ,text: _('marvin.location.delete_confirm')
             ,url: this.config.url
             ,params: {
-                action: 'mgr/item/remove'
+                action: 'mgr/location/delete'
                 ,id: this.menu.record.id
             }
             ,listeners: {
