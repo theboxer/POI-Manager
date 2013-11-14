@@ -11,7 +11,7 @@ require_once 'marvinsimpleobject.class.php';
  * @property MarvinPhoto $Photos
  * @property MarvinLocationTag $LocationTags
  * @property MarvinFieldValue $FieldValues
- *
+ * @property MarvinLocationCategory $LocationCategories
  *
  * @package marvin
  */

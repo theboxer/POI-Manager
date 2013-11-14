@@ -35,6 +35,7 @@
         <composite alias="Photos" class="MarvinPhoto" local="id" foreign="location" cardinality="many" owner="local" />
         <composite alias="LocationTags" class="MarvinLocationTag" local="id" foreign="tag" cardinality="many" owner="local" />
         <composite alias="FieldValues" class="MarvinFieldValue" local="id" foreign="location" cardinality="many" owner="local" />
+        <composite alias="LocationCategories" class="MarvinLocationCategory" local="id" foreign="location" cardinality="many" owner="local" />
     </object>
 
     <object class="MarvinFeedback" table="marvin_feedback" extends="MarvinSimpleObject">

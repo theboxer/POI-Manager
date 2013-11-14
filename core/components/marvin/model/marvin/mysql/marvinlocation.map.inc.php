@@ -90,6 +90,14 @@ $xpdo_meta_map['MarvinLocation']= array (
       'cardinality' => 'many',
       'owner' => 'local',
     ),
+    'LocationCategories' => 
+    array (
+      'class' => 'MarvinLocationCategory',
+      'local' => 'id',
+      'foreign' => 'location',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
   ),
   'aggregates' => 
   array (
