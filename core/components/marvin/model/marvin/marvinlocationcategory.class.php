@@ -7,4 +7,4 @@
  *
  * @package marvin
  */
-class MarvinLocationCategory extends xPDOSimpleObject {}
+class MarvinLocationCategory extends xPDOObject {}

@@ -114,7 +114,7 @@
         <aggregate alias="Field" class="MarvinField" local="field" foreign="id" owner="foreign" cardinality="one" />
     </object>
 
-    <object class="MarvinLocationTag" table="marvin_locations_tags" extends="xPDOSimpleObject">
+    <object class="MarvinLocationTag" table="marvin_locations_tags" extends="xPDOObject">
         <field key="location" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
         <field key="tag" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
 
@@ -127,7 +127,7 @@
         <aggregate alias="Tag" class="MarvinTag" local="tag" foreign="id" owner="foreign" cardinality="one" />
     </object>
 
-    <object class="MarvinLocationCategory" table="marvin_locations_categories" extends="xPDOSimpleObject">
+    <object class="MarvinLocationCategory" table="marvin_locations_categories" extends="xPDOObject">
         <field key="location" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
         <field key="category" dbtype="int" precision="10" phptype="integer" null="false" index="pk" />
 

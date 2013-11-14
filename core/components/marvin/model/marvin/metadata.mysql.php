@@ -10,8 +10,6 @@ $xpdo_meta_map = array (
     0 => 'MarvinCategoryExtendedFields',
     1 => 'MarvinSimpleObject',
     2 => 'MarvinTag',
-    3 => 'MarvinLocationTag',
-    4 => 'MarvinLocationCategory',
   ),
   'MarvinSimpleObject' => 
   array (
@@ -22,5 +20,10 @@ $xpdo_meta_map = array (
     4 => 'MarvinLocationType',
     5 => 'MarvinField',
     6 => 'MarvinFieldValue',
+  ),
+  'xPDOObject' => 
+  array (
+    0 => 'MarvinLocationTag',
+    1 => 'MarvinLocationCategory',
   ),
 );

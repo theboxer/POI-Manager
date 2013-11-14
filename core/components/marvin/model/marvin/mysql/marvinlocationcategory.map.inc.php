@@ -6,7 +6,7 @@ $xpdo_meta_map['MarvinLocationCategory']= array (
   'package' => 'marvin',
   'version' => NULL,
   'table' => 'marvin_locations_categories',
-  'extends' => 'xPDOSimpleObject',
+  'extends' => 'xPDOObject',
   'fields' => 
   array (
     'location' => NULL,
