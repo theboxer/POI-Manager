@@ -11,6 +11,8 @@ $xpdo_meta_map['MarvinLocation']= array (
   array (
     'name' => '',
     'alias' => '',
+    'lat' => NULL,
+    'lng' => NULL,
     'state' => '',
     'type' => NULL,
   ),
@@ -31,6 +33,18 @@ $xpdo_meta_map['MarvinLocation']= array (
       'phptype' => 'string',
       'null' => false,
       'default' => '',
+    ),
+    'lat' => 
+    array (
+      'dbtype' => 'float',
+      'phptype' => 'float',
+      'null' => false,
+    ),
+    'lng' => 
+    array (
+      'dbtype' => 'float',
+      'phptype' => 'float',
+      'null' => false,
     ),
     'state' => 
     array (

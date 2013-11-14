@@ -3,6 +3,8 @@ require_once 'marvinsimpleobject.class.php';
 /**
  * @property string $name
  * @property string $alias
+ * @property float $lat
+ * @property float $lng
  * @property string $state
  * @property int $type
  * @property MarvinLocationType $Type
