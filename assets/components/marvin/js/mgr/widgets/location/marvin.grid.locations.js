@@ -25,7 +25,7 @@ Marvin.grid.Locations = function(config) {
             ,width: 100
         }]
         ,tbar: [{
-            text: _('marvin.location.create_location')
+            text: _('marvin.location.create')
             ,handler: this.createLocation
             ,scope: this
         },'->',{
@@ -57,10 +57,10 @@ Ext.extend(Marvin.grid.Locations,MODx.grid.Grid,{
 
     ,getMenu: function() {
         var m = [];
-//        m.push({
-//            text: _('marvin.item_update')
-//            ,handler: this.updateItem
-//        });
+        m.push({
+            text: _('marvin.location.update')
+            ,handler: this.updateLocation
+        });
         m.push('-');
         m.push({
             text: _('marvin.location.delete')
@@ -71,6 +71,10 @@ Ext.extend(Marvin.grid.Locations,MODx.grid.Grid,{
 
     ,createLocation: function() {
         MODx.loadPage(MODx.action['marvin:location'], 'parent=' + MODx.request.id);
+    }
+
+    ,updateLocation: function() {
+        MODx.loadPage(MODx.action['marvin:location'], 'action=location/update&parent=' + MODx.request.id + '&id=' + this.menu.record.id);
     }
 
     ,deleteLocation: function(btn,e) {

@@ -1,11 +1,12 @@
 <?php
 /**
- * Create a Location
+ * Update a Location
  * 
  * @package marvin
- * @subpackage processors.location
+ * @subpackage processors
  */
-class MarvinLocationCreateProcessor extends modObjectCreateProcessor {
+
+class MarvinLocationUpdateProcessor extends modObjectUpdateProcessor {
     public $classKey = 'MarvinLocation';
     public $languageTopics = array('marvin:default');
     public $objectType = 'marvin.location';
@@ -34,14 +35,15 @@ class MarvinLocationCreateProcessor extends modObjectCreateProcessor {
             $this->setProperty('alias', $modResource->cleanAlias($name));
         }
 
-        $this->setProperty('created', time());
-
-        return parent::beforeSave();
+        $this->setProperty('updated', time());
+        $this->setProperty('updated_by', $this->modx->user->id);
+        
+        return parent::beforeSet();
     }
 
-    public function afterSave() {
+    public function afterSave(){
         $this->object->addCategories($this->categories);
     }
 
 }
-return 'MarvinLocationCreateProcessor';
+return 'MarvinLocationUpdateProcessor';

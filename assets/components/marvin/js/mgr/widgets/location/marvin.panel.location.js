@@ -31,24 +31,47 @@ Marvin.panel.Location = function(config) {
 
 Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
     setup: function() {
-
 //        this.getForm().setValues({email: MODx.user.email, phone: MODx.user.phone, parent: MODx.request.parent});
+        var c = Ext.getCmp('marvin-panel-location-categories');
+        c.store.reload();
 
-//        var parent = MODx.request.parent;
-//
-//        var buttons = Ext.getCmp('marvin-page-location').buttons;
-//        Ext.each(buttons, function(button){
-//            if(button.text == _('cancel')){
-//                if(parent == 0){
-//                    button.params.a = MODx.action['marvin:location'];
-//                    delete button.params.id;
-//                }else{
-//                    button.params.id = parent;
-//                }
-//            }
-//        });
+        var parent = MODx.request.parent;
 
-        this.fireEvent('ready');
+        var buttons = Ext.getCmp('marvin-page-location').buttons;
+        Ext.each(buttons, function(button){
+            if(button.text == _('cancel')){
+                if(parent == 0){
+                    button.params.a = MODx.action['marvin:location'];
+                    delete button.params.id;
+                }else{
+                    button.params.id = parent;
+                }
+            }
+        });
+
+        if (this.config.isUpdate) {
+            MODx.Ajax.request({
+                url: this.config.url
+                ,params: {
+                    action: 'mgr/location/get'
+                    ,id: MODx.request.id
+                },
+                listeners: {
+                    'success': {
+                        fn: function(r) {
+                            this.getForm().setValues(r.object);
+
+                            this.fireEvent('ready', r.object);
+                            MODx.fireEvent('ready');
+                        },
+                        scope: this
+                    }
+                }
+            });
+        } else {
+            this.fireEvent('ready');
+            MODx.fireEvent('ready');
+        }
     }
 
     ,success: function(o, r) {
@@ -57,8 +80,7 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
 
     ,beforeSubmit: function(o) {
         var d = {};
-
-        var categories = Ext.getCmp('marvin-panel-location-category');
+        var categories = Ext.getCmp('marvin-panel-location-categories');
         if(categories) {d.categories = categories.getValue()}
 
         Ext.apply(o.form.baseParams, d, {});
@@ -134,9 +156,9 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                         ,items: [{
                             xtype: 'marvin-combo-location-category'
                             ,fieldLabel: _('marvin.location.category')
-                            ,name: 'fake_category'
-                            ,hiddenName: 'fake_category'
-                            ,id: this.ident +'-category'
+                            ,name: 'fake_categories'
+                            ,hiddenName: 'fake_categories'
+                            ,id: this.ident +'-categories'
                             ,anchor: '100%'
                         }]
                     },{

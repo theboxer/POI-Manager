@@ -17,7 +17,8 @@ class MarvinCategoryGetListProcessor extends modObjectGetListProcessor {
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where(array(
-                'pagetitle:LIKE' => '%'.$query.'%',
+                'id' => $query,
+                'OR:pagetitle:LIKE' => '%'.$query.'%',
             ));
         }
 

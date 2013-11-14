@@ -28,7 +28,7 @@ class MarvinLocationGetListProcessor extends modObjectGetListProcessor {
         $c->where(array(
             'deleted' => 0
         ));
-        
+
         return $c;
     }
 }

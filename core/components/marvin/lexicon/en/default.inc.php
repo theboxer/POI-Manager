@@ -24,7 +24,8 @@ $_lang['marvin.category.color_help'] = 'Color of category markers';
 $_lang['marvin.category.locations'] = 'Locations';
 
 //Locations
-$_lang['marvin.location.create_location'] = 'Create a location';
+$_lang['marvin.location.create'] = 'Create Location';
+$_lang['marvin.location.update'] = 'Update Location';
 $_lang['marvin.location.delete'] = 'Delete Location';
 $_lang['marvin.location.delete_confirm'] = 'Are you sure, that you want to delete this Location?';
 $_lang['marvin.location.alias'] = 'Alias';
