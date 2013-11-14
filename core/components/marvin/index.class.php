@@ -3,10 +3,6 @@ require_once dirname(__FILE__) . '/model/marvin/marvin.class.php';
 /**
  * @package marvin
  */
-class IndexManagerController extends MarvinBaseManagerController {
-    public static function getDefaultController() { return 'home'; }
-}
-
 abstract class MarvinBaseManagerController extends modExtraManagerController {
     /** @var Marvin $marvin */
     public $marvin;
@@ -28,3 +24,9 @@ abstract class MarvinBaseManagerController extends modExtraManagerController {
     }
     public function checkPermissions() { return true;}
 }
+
+class IndexManagerController extends MarvinBaseManagerController {
+    public static function getDefaultController() { return 'home'; }
+}
+
+

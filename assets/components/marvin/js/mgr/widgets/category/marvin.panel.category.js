@@ -148,6 +148,10 @@ Ext.extend(Marvin.panel.Category,MODx.panel.Resource,{
         return [{
             'xtype': 'marvin-grid-locations'
             ,url: Marvin.connectorUrl
+            ,baseParams: {
+                action: 'mgr/location/getlist'
+                ,category: MODx.request.id
+            }
             ,anchor: '100%'
         }];
     }

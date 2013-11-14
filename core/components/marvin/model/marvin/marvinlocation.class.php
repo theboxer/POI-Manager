@@ -15,4 +15,38 @@ require_once 'marvinsimpleobject.class.php';
  *
  * @package marvin
  */
-class MarvinLocation extends MarvinSimpleObject {}
+class MarvinLocation extends MarvinSimpleObject {
+
+    /**
+     * Add categories to Location
+     *
+     * @param array $categories
+     */
+    public function addCategories($categories) {
+        $this->removeCategories();
+
+        foreach($categories as $category) {
+            /** @var MarvinCategory $category */
+            $category = $this->xpdo->getObject('MarvinCategory', $category);
+            if ($category) {
+                /** @var MarvinLocationCategory $locationCategory */
+                $locationCategory = $this->xpdo->newObject('MarvinLocationCategory');
+                $locationCategory->addOne($category, 'Category');
+                $locationCategory->addOne($this, 'Location');
+                $locationCategory->save();
+            }
+        }
+    }
+
+    /**
+     * Remove all categories from Location
+     */
+    public function removeCategories() {
+        $categories = $this->LocationCategories;
+
+        /** @var MarvinLocationCategory $category */
+        foreach ($categories as $category) {
+            $category->remove();
+        }
+    }
+}

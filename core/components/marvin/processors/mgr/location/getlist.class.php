@@ -3,7 +3,7 @@
  * Get list of Locations
  *
  * @package marvin
- * @subpackage processors
+ * @subpackage processors.location
  */
 class MarvinLocationGetListProcessor extends modObjectGetListProcessor {
     public $classKey = 'MarvinLocation';
@@ -13,6 +13,11 @@ class MarvinLocationGetListProcessor extends modObjectGetListProcessor {
     public $objectType = 'marvin.locations';
 
     public function prepareQueryBeforeCount(xPDOQuery $c) {
+        $category = $this->getProperty('category');
+        if (!empty($category)) {
+            $c->rightJoin('MarvinLocationCategory', 'Category', 'Category.location = MarvinLocation.id AND Category.category =' . $category);
+        }
+
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where(array(
@@ -23,7 +28,7 @@ class MarvinLocationGetListProcessor extends modObjectGetListProcessor {
         $c->where(array(
             'deleted' => 0
         ));
-
+        
         return $c;
     }
 }

@@ -88,4 +88,20 @@ class Marvin {
         }
         return $chunk;
     }
+
+    /**
+     * Explodes field by delimiter, trim array values, remove duplicates and blank values
+     *
+     * @param $field
+     * @param string $delimiter
+     * @return array
+     */
+    public function explodeAndClean($field, $delimiter = ','){
+        $fields = explode($delimiter, $field);
+        $fields = array_map('trim', $fields);
+        $fields = array_keys(array_flip($fields));
+        $fields = array_filter($fields);
+
+        return $fields;
+    }
 }

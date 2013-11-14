@@ -28,3 +28,15 @@ $_lang['marvin.location.create_location'] = 'Create a location';
 $_lang['marvin.location.delete'] = 'Delete Location';
 $_lang['marvin.location.delete_confirm'] = 'Are you sure, that you want to delete this Location?';
 $_lang['marvin.location.alias'] = 'Alias';
+$_lang['marvin.location.create_title'] = 'Create Location';
+$_lang['marvin.location.update_title'] = 'Update Location';
+$_lang['marvin.location.name'] = 'Name';
+$_lang['marvin.location.alias'] = 'Alias';
+$_lang['marvin.location.state'] = 'State';
+$_lang['marvin.location.state_new'] = 'New';
+$_lang['marvin.location.state_published'] = 'Published';
+$_lang['marvin.location.state_unpublished'] = 'Unpublished';
+$_lang['marvin.location.category'] = 'Category';
+
+$_lang['marvin.location.err_ns_name'] = 'Name is a required field. Please specify Location\'s name.';
+$_lang['marvin.location.err_ns_category'] = 'Category is a required field. Please specify at least one Category.';

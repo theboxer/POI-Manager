@@ -7,8 +7,6 @@ Marvin.grid.Locations = function(config) {
         ,baseParams: {
             action: 'mgr/location/getlist'
         }
-//        ,save_action: 'mgr/item/updatefromgrid'
-//        ,autosave: true
         ,fields: ['id','name','alias']
         ,autoHeight: true
         ,paging: true
@@ -21,7 +19,6 @@ Marvin.grid.Locations = function(config) {
         },{
             header: _('name')
             ,dataIndex: 'name'
-//            ,editor: { xtype: 'textfield' }
         },{
             header: _('marvin.location.alias')
             ,dataIndex: 'alias'
@@ -29,7 +26,7 @@ Marvin.grid.Locations = function(config) {
         }]
         ,tbar: [{
             text: _('marvin.location.create_location')
-//            ,handler: this.createItem
+            ,handler: this.createLocation
             ,scope: this
         },'->',{
             xtype: 'textfield'
@@ -70,6 +67,10 @@ Ext.extend(Marvin.grid.Locations,MODx.grid.Grid,{
             ,handler: this.deleteLocation
         });
         this.addContextMenuItem(m);
+    }
+
+    ,createLocation: function() {
+        MODx.loadPage(MODx.action['marvin:location'], 'parent=' + MODx.request.id);
     }
 
     ,deleteLocation: function(btn,e) {
