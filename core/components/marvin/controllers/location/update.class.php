@@ -13,8 +13,8 @@ class MarvinLocationUpdateManagerController extends MarvinBaseManagerController 
     public function loadCustomCssJs() {
         $this->addCss($this->marvin->config['cssUrl'].'superboxselect.css');
 
-        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/extra/SuperBoxSelect.js');
-        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/extra/marvin.combo.js');
+        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/extra/SuperBoxSelect.js');
+        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/extra/marvin.combo.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/location/marvin.panel.location.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/sections/location/create.js');
     }

@@ -37,7 +37,7 @@ class MarvinLocationUpdateProcessor extends modObjectUpdateProcessor {
 
         $this->setProperty('updated', time());
         $this->setProperty('updated_by', $this->modx->user->id);
-        
+
         return parent::beforeSet();
     }
 
