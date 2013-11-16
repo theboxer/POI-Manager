@@ -101,9 +101,11 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                         fn: function(r) {
                             this.getForm().setValues(r.object);
 
-                            mapPanel.setZoom(r.object.zoom);
-                            mapPanel.setMarkerPosition(r.object.lat, r.object.lng);
-
+                            mapPanel.on('mapready', function() {
+                                mapPanel.setZoom(r.object.zoom);
+                                mapPanel.setMarkerPosition(r.object.lat, r.object.lng);
+                            });
+                            
                             this.fireEvent('ready', r.object);
                             MODx.fireEvent('ready');
                         },
