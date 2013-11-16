@@ -13,8 +13,11 @@ class MarvinLocationCreateManagerController extends MarvinBaseManagerController 
     public function loadCustomCssJs() {
         $this->addCss($this->marvin->config['cssUrl'].'superboxselect.css');
 
+        $this->addLastJavascript('http://maps.google.com/maps/api/js?sensor=false');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/extra/SuperBoxSelect.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/extra/marvin.combo.js');
+        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/extra/gmappanel.js');
+        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/extra/map.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/location/marvin.panel.location.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/sections/location/create.js');
     }

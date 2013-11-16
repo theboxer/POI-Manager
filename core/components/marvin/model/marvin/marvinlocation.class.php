@@ -5,6 +5,7 @@ require_once 'marvinsimpleobject.class.php';
  * @property string $alias
  * @property float $lat
  * @property float $lng
+ * @property int $zoom
  * @property string $state
  * @property int $type
  * @property MarvinLocationType $Type

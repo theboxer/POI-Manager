@@ -25,8 +25,9 @@
     <object class="MarvinLocation" table="marvin_locations" extends="MarvinSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
         <field key="alias" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
-        <field key="lat" dbtype="float" phptype="float" null="false" />
-        <field key="lng" dbtype="float" phptype="float" null="false" />
+        <field key="lat" dbtype="float" precision="20,15" phptype="float" null="false" />
+        <field key="lng" dbtype="float" precision="20,15" phptype="float" null="false" />
+        <field key="zoom" dbtype="int" precision="5" phptype="integer" null="false" default="7" />
         <field key="state" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="type" dbtype="int" precision="10" phptype="integer" null="false" />
 

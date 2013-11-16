@@ -7,6 +7,8 @@ class MarvinLocationGetProcessor extends modObjectGetProcessor
 {
     public $classKey = 'MarvinLocation';
     public $languageTopics = array('marvin:default');
+    /** @var MarvinLocation $object */
+    public $object;
 
     public function beforeOutput() {
 
@@ -20,16 +22,11 @@ class MarvinLocationGetProcessor extends modObjectGetProcessor
 
         $this->object->set('fake_categories', implode(',', $categoryOutput));
 
-//        $createdBy = $this->modx->getObject('modUser', $this->object->created_by);
-//        if ($createdBy) {
-//            $createdByProfile = $createdBy->getOne('Profile');
-//            $this->object->set('created_by_name', $createdByProfile->fullname);
-//        }
-//        $editedBy = $this->modx->getObject('modUser', $this->object->edited_by);
-//        if ($editedBy) {
-//            $editedByProfile = $editedBy->getOne('Profile');
-//            $this->object->set('edited_by_name', $editedByProfile->fullname);
-//        }
+        /** @var modUser $updatedBy */
+        $updatedBy = $this->object->getOne('UpdatedBy');
+        if ($updatedBy) {
+            $this->object->set('updated_by_name', $updatedBy->Profile->fullname);
+        }
     }
 }
 

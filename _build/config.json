@@ -3,9 +3,25 @@
     ,"lowCaseName": "marvin"
     ,"description": "Platform for managing POIs on map"
     ,"author": "Jan Peca"
-    ,"version": "0.0.1"
+    ,"version": "0.0.3"
     ,"package":{
-
+        "actions": [{
+            "id": 1
+            ,"controller": "location"
+        }]
+        ,"systemSettings": [{
+            "key": "default_zoom"
+            ,"value": "7"
+            ,"area": "Map options"
+        },{
+            "key": "default_lat"
+            ,"value": "50.0775058"
+            ,"area": "Map options"
+        },{
+            "key": "default_lng"
+            ,"value": "14.4296144"
+            ,"area": "Map options"
+        }]
     }
     ,"database":{
         "tables": [

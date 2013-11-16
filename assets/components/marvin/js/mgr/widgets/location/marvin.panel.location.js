@@ -49,6 +49,35 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
             }
         });
 
+        var zoomField = Ext.getCmp('marvin-panel-location-zoom');
+        var latField = Ext.getCmp('marvin-panel-location-lat');
+        var lngField = Ext.getCmp('marvin-panel-location-lng');
+        var mapPanel = Ext.getCmp('marvin-panel-location-map');
+
+        mapPanel.on('mapready', function() {
+            zoomField.on('change', function(field, newValue) {
+                mapPanel.setZoom(parseInt(newValue));
+            });
+
+            latField.on('change', function(field, newValue) {
+                if (parseFloat(lngField.getValue()) != '') {
+                    mapPanel.setMarkerPosition(newValue, parseFloat(lngField.getValue()));
+                }
+            });
+
+            lngField.on('change', function(field, newValue) {
+                if (parseFloat(latField.getValue()) != '') {
+                    mapPanel.setMarkerPosition(parseFloat(latField.getValue()), newValue);
+                }
+            });
+
+            if (mapPanel.marker) {
+                mapPanel.gmap.setCenter(mapPanel.marker.getPosition());
+            }
+
+        }, this);
+
+
         if (this.config.isUpdate) {
             MODx.Ajax.request({
                 url: this.config.url
@@ -60,6 +89,9 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                     'success': {
                         fn: function(r) {
                             this.getForm().setValues(r.object);
+
+                            mapPanel.setZoom(r.object.zoom);
+                            mapPanel.setMarkerPosition(r.object.lat, r.object.lng);
 
                             this.fireEvent('ready', r.object);
                             MODx.fireEvent('ready');
@@ -159,10 +191,11 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                             ,name: 'fake_categories'
                             ,hiddenName: 'fake_categories'
                             ,id: this.ident +'-categories'
+                            ,itemCls: 'required'
                             ,anchor: '100%'
                         }]
                     },{
-                        columnWidth: 0.2
+                        columnWidth: 0.20
                         ,border: false
                         ,defaults: {
                             msgTarget: 'under'
@@ -173,6 +206,130 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                             ,name: 'state'
                             ,id: this.ident +'-state'
                             ,anchor: '100%'
+                        },this.getInfoFields(config)]
+                    }]
+                }]
+            }]
+        },{
+            html: '<br />'
+            ,border: false
+            ,cls: 'modx-page-header'
+        },{
+            deferredRender: false
+            ,border: true
+            ,defaults: {
+                layout: 'form'
+                ,labelWidth: 150
+                ,bodyCssClass: 'main-wrapper'
+                ,layoutOnTabChange: true
+            }
+            ,items: [{
+                defaults: {
+                    msgTarget: 'side'
+                    ,autoHeight: true
+                }
+                ,cls: 'form-with-labels'
+                ,border: false
+                ,items: [{
+                    layout: 'column'
+                    ,border: false
+                    ,height: 100
+                    ,defaults: {
+                        layout: 'form'
+                        ,labelAlign: 'top'
+                        ,labelSeparator: ''
+                        ,anchor: '100%'
+                        ,border: false
+                    }
+                    ,items: [{
+                        columnWidth: 0.4
+                        ,border: false
+                        ,defaults: {
+                            msgTarget: 'under'
+                        }
+                        ,items: [{
+                            xtype: 'numberfield'
+                            ,fieldLabel: _('marvin.location.lat')
+                            ,name: 'lat'
+                            ,id: this.ident +'-lat'
+                            ,itemCls: 'required'
+                            ,anchor: '100%'
+                            ,allowBlank: false
+                            ,allowNegative: false
+                            ,decimalPrecision: 15
+                        }]
+                    },{
+                        columnWidth: 0.4
+                        ,border: false
+                        ,defaults: {
+                            msgTarget: 'under'
+                        }
+                        ,items: [{
+                            xtype: 'numberfield'
+                            ,fieldLabel: _('marvin.location.lng')
+                            ,name: 'lng'
+                            ,id: this.ident +'-lng'
+                            ,itemCls: 'required'
+                            ,anchor: '100%'
+                            ,allowBlank: false
+                            ,allowNegative: false
+                            ,decimalPrecision: 15
+                        }]
+                    },{
+                        columnWidth: 0.2
+                        ,border: false
+                        ,defaults: {
+                            msgTarget: 'under'
+                        }
+                        ,items: [{
+                            xtype: 'numberfield'
+                            ,fieldLabel: _('marvin.location.zoom')
+                            ,name: 'zoom'
+                            ,id: this.ident +'-zoom'
+                            ,itemCls: 'required'
+                            ,anchor: '100%'
+                            ,allowBlank: false
+                            ,allowNegative: false
+                            ,allowDecimals: false
+                            ,value: MODx.config['marvin.default_zoom']
+                        }]
+                    }]
+                }]
+            },{
+                defaults: {
+                    msgTarget: 'side'
+                    ,autoHeight: true
+                }
+                ,cls: 'form-with-labels'
+                ,border: false
+                ,items: [{
+                    layout: 'column'
+                    ,border: false
+                    ,height: 100
+                    ,defaults: {
+                        layout: 'form'
+                        ,labelAlign: 'top'
+                        ,labelSeparator: ''
+                        ,anchor: '100%'
+                        ,border: false
+                    }
+                    ,items: [{
+                        columnWidth: 1
+                        ,border: false
+                        ,defaults: {
+                            msgTarget: 'under'
+                        }
+                        ,items: [{
+                            xtype: 'marvin-panel-map'
+                            ,id: this.ident + '-map'
+                            ,zoomLevel: parseInt(MODx.config['marvin.default_zoom'])
+                            ,gmapType: 'map'
+                            ,mapControls: ['GSmallMapControl','GMapTypeControl','NonExistantControl']
+                            ,mapOptions: {
+                                'scrollwheel': false
+                                ,'center': new google.maps.LatLng(parseFloat(MODx.config['marvin.default_lat']), parseFloat(MODx.config['marvin.default_lng']))
+                            }
+                            ,height: 400
                         }]
                     }]
                 }]
@@ -180,6 +337,31 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
         }];
 
         return items;
+    }
+
+    ,getInfoFields: function(config) {
+        var fields = [];
+
+        if (config.isUpdate) {
+            fields.push({
+                xtype: 'statictextfield'
+                ,fieldLabel: _('marvin.location.created')
+                ,name: 'created'
+                ,anchor: '100%'
+            },{
+                xtype: 'statictextfield'
+                ,fieldLabel: _('marvin.location.updated_by')
+                ,name: 'updated_by_name'
+                ,anchor: '100%'
+            },{
+                xtype: 'statictextfield'
+                ,fieldLabel: _('marvin.location.updated')
+                ,name: 'updated'
+                ,anchor: '100%'
+            });
+        }
+
+        return fields;
     }
 });
 Ext.reg('marvin-panel-location',Marvin.panel.Location);
