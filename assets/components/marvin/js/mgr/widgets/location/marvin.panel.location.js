@@ -10,7 +10,27 @@ Marvin.panel.Location = function(config) {
             action: 'mgr/location/create'
         }
         ,useLoadingMask: true
-        ,items: this.getItems(config)
+        ,items: [{
+            html: '<h2>' + ((config.isUpdate == true)? _('marvin.location.update_title') : _('marvin.location.create_title')) + '</h2>'
+            ,border: false
+            ,cls: 'modx-page-header'
+        },{
+            xtype: 'modx-tabs'
+            ,defaults: { border: false ,autoHeight: true }
+            ,border: false
+            ,activeItem: 0
+            ,hideMode: 'offsets'
+            ,items: [{
+                title: _('marvin.location.location')
+                ,items: this.getLocationTab(config)
+            },{
+                title: _('marvin.location.photos')
+            },{
+                title: _('marvin.location.comments')
+            },{
+                title: _('marvin.location.feedback')
+            }]
+        }]
         ,listeners: {
             'setup': {
                 fn: this.setup
@@ -118,14 +138,10 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
         Ext.apply(o.form.baseParams, d, {});
     }
 
-    ,getItems: function(config){
+    ,getLocationTab: function(config){
         var items = [{
             name: 'parent'
             ,xtype: 'hidden'
-        },{
-            html: '<h2>' + ((config.isUpdate == true)? _('marvin.location.update_title') : _('marvin.location.create_title')) + '</h2>'
-            ,border: false
-            ,cls: 'modx-page-header'
         },{
             deferredRender: false
             ,border: true
@@ -212,8 +228,7 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
             }]
         },{
             html: '<br />'
-            ,border: false
-            ,cls: 'modx-page-header'
+//          @TODO: add style to remvoe left&right border and add same bg color as ouside of panel
         },{
             deferredRender: false
             ,border: true

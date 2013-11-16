@@ -44,6 +44,10 @@ $_lang['marvin.location.zoom'] = 'Zoom';
 $_lang['marvin.location.created'] = 'Created';
 $_lang['marvin.location.updated_by'] = 'Updated By';
 $_lang['marvin.location.updated'] = 'Updated';
+$_lang['marvin.location.location'] = 'Location';
+$_lang['marvin.location.comments'] = 'Comments';
+$_lang['marvin.location.feedback'] = 'Feedback';
+$_lang['marvin.location.photos'] = 'Photos';
 
 $_lang['marvin.location.err_ns_name'] = 'Name is a required field. Please specify Location\'s name.';
 $_lang['marvin.location.err_ns_category'] = 'Category is a required field. Please specify at least one Category.';
