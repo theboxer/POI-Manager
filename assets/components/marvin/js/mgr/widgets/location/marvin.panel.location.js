@@ -20,16 +20,7 @@ Marvin.panel.Location = function(config) {
             ,border: false
             ,activeItem: 0
             ,hideMode: 'offsets'
-            ,items: [{
-                title: _('marvin.location.location')
-                ,items: this.getLocationTab(config)
-            },{
-                title: _('marvin.location.photos')
-            },{
-                title: _('marvin.location.comments')
-            },{
-                title: _('marvin.location.feedback')
-            }]
+            ,items: this.getTabs(config)
         }]
         ,listeners: {
             'setup': {
@@ -136,6 +127,26 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
         if(categories) {d.categories = categories.getValue()}
 
         Ext.apply(o.form.baseParams, d, {});
+    }
+
+    ,getTabs: function(config) {
+        var tabs = [];
+        tabs.push({
+            title: _('marvin.location.location')
+            ,items: this.getLocationTab(config)
+        });
+
+        if (config.isUpdate) {
+            tabs.push({
+                title: _('marvin.location.photos')
+            },{
+                title: _('marvin.location.comments')
+            },{
+                title: _('marvin.location.feedback')
+            });
+        }
+
+        return tabs;
     }
 
     ,getLocationTab: function(config){
