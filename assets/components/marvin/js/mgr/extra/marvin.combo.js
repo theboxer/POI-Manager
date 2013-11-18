@@ -25,6 +25,33 @@ Marvin.combo.LocationState = function(config) {
 Ext.extend(Marvin.combo.LocationState,MODx.combo.ComboBox);
 Ext.reg('marvin-combo-location-state',Marvin.combo.LocationState);
 
+Marvin.combo.FeedbackState = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        store: new Ext.data.SimpleStore({
+            fields: ['d','v']
+            ,data: [
+                [_('marvin.feedback.state_new'), 'new']
+                ,[_('marvin.feedback.state_in_progress'), 'in_progress']
+                ,[_('marvin.feedback.state_solved'), 'solved']
+            ]
+        })
+        ,displayField: 'd'
+        ,valueField: 'v'
+        ,value: 'new'
+        ,mode: 'local'
+        ,triggerAction: 'all'
+        ,editable: false
+        ,selectOnFocus: false
+        ,preventRender: true
+        ,forceSelection: true
+        ,enableKeyEvents: true
+    });
+    Marvin.combo.FeedbackState.superclass.constructor.call(this,config);
+};
+Ext.extend(Marvin.combo.FeedbackState,MODx.combo.ComboBox);
+Ext.reg('marvin-combo-feedback-state',Marvin.combo.FeedbackState);
+
 Marvin.combo.LocationCategory = function(config, getStore) {
     config = config || {};
     Ext.applyIf(config,{

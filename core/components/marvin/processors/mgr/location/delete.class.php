@@ -1,7 +1,7 @@
 <?php
 require_once dirname(dirname(__FILE__)) . '/modobjectsoftremoveprocessor.php';
 /**
- * Remove an Item.
+ * Remove an Location.
  * 
  * @package marvin
  * @subpackage processors.location
@@ -9,7 +9,7 @@ require_once dirname(dirname(__FILE__)) . '/modobjectsoftremoveprocessor.php';
 class MarvinLocationDeleteProcessor extends modObjectSoftRemoveProcessor {
     public $classKey = 'MarvinLocation';
     public $languageTopics = array('marvin:default');
-    public $objectType = 'marvin.locations';
+    public $objectType = 'marvin.location';
     public $useDeletedOn = true;
     public $deletedOnField = 'deleted';
 }

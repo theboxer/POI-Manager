@@ -105,7 +105,7 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                                 mapPanel.setZoom(r.object.zoom);
                                 mapPanel.setMarkerPosition(r.object.lat, r.object.lng);
                             });
-                            
+
                             this.fireEvent('ready', r.object);
                             MODx.fireEvent('ready');
                         },
@@ -144,7 +144,9 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
             },{
                 title: _('marvin.location.comments')
             },{
-                title: _('marvin.location.feedback')
+                title: _('marvin.feedback')
+                ,items: this.getFeedbackTab(config)
+                ,border: true
             });
         }
 
@@ -365,6 +367,17 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
         }];
 
         return items;
+    }
+
+    ,getFeedbackTab: function(config) {
+        var fields = [];
+
+        fields.push({
+            xtype: 'marvin-grid-feedback'
+            ,cls: 'main-wrapper'
+        });
+
+        return fields;
     }
 
     ,getInfoFields: function(config) {

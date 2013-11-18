@@ -23,7 +23,8 @@ class MarvinCategoryGetListProcessor extends modObjectGetListProcessor {
         }
 
         $c->where(array(
-            'class_key' => 'MarvinCategory'
+            'class_key' => 'MarvinCategory',
+            'deleted' => 0
         ));
 
         return $c;
