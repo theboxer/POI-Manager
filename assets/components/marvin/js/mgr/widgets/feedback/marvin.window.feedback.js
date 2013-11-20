@@ -3,6 +3,8 @@ Marvin.window.FeedbackReview = function(config) {
     this.ident = config.ident || 'marvin-window-'+Ext.id();
     Ext.applyIf(config,{
         id: this.ident
+        ,url: Marvin.config.connectorUrl
+        ,action: 'mgr/feedback/update'
         ,closeAction: 'close'
         ,width: 600
         ,fields: [{
@@ -45,6 +47,12 @@ Marvin.window.FeedbackReview = function(config) {
                     msgTarget: 'under'
                 }
                 ,items: [{
+                    xtype: 'marvin-combo-feedback-state'
+                    ,fieldLabel: _('marvin.feedback.state')
+                    ,hiddenName: 'state'
+                    ,anchor: '100%'
+                    ,id: this.ident+'-state'
+                },{
                     xtype: 'statictextfield'
                     ,fieldLabel: _('marvin.feedback.authors_name')
                     ,name: 'authors_name'
@@ -58,11 +66,6 @@ Marvin.window.FeedbackReview = function(config) {
                     ,anchor: '100%'
                 }]
             }]
-        }]
-        ,buttons: [{
-            text: _('marvin.feedback.close')
-            ,scope: this
-            ,handler: function() { config.closeAction !== 'close' ? this.hide() : this.close(); }
         }]
     });
     Marvin.window.FeedbackReview.superclass.constructor.call(this,config);

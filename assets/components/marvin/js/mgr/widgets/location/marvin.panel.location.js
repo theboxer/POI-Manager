@@ -234,7 +234,7 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                         ,items: [{
                             xtype: 'marvin-combo-location-state'
                             ,fieldLabel: _('marvin.location.state')
-                            ,name: 'state'
+                            ,hiddenName: 'state'
                             ,id: this.ident +'-state'
                             ,anchor: '100%'
                         },this.getInfoFields(config)]
