@@ -7,7 +7,7 @@ Marvin.grid.Feedback = function(config) {
         ,baseParams: {
             action: 'mgr/feedback/getlist'
         }
-        ,fields: ['id','text','authors_name', 'authors_email', 'state', 'location', 'created', 'updated', 'updated_by', 'deleted']
+        ,fields: ['id','text','authors_name', 'authors_email', 'state', 'location', 'created', 'updated', 'updated_by', 'updated_by_name', 'deleted']
         ,autoHeight: true
         ,paging: true
         ,remoteSort: true

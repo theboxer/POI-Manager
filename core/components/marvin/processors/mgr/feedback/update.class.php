@@ -11,5 +11,12 @@ class MarvinUpdateFeedbackProcessor extends modObjectUpdateProcessor {
     public $languageTopics = array('marvin:default');
     public $objectType = 'marvin.feedback';
 
+    public function beforeSet(){
+        $this->setProperty('updated', time());
+        $this->setProperty('updated_by', $this->modx->user->id);
+
+        return parent::beforeSet();
+    }
+
 }
 return 'MarvinUpdateFeedbackProcessor';

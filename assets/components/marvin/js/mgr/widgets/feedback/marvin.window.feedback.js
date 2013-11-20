@@ -64,6 +64,21 @@ Marvin.window.FeedbackReview = function(config) {
                     ,name: 'authors_email'
                     ,id: this.ident+'-authors_email'
                     ,anchor: '100%'
+                },{
+                    xtype: 'statictextfield'
+                    ,fieldLabel: _('marvin.location.created')
+                    ,name: 'created'
+                    ,anchor: '100%'
+                },{
+                    xtype: 'statictextfield'
+                    ,fieldLabel: _('marvin.location.updated_by')
+                    ,name: 'updated_by_name'
+                    ,anchor: '100%'
+                },{
+                    xtype: 'statictextfield'
+                    ,fieldLabel: _('marvin.location.updated')
+                    ,name: 'updated'
+                    ,anchor: '100%'
                 }]
             }]
         }]

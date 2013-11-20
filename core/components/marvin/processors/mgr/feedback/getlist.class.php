@@ -13,7 +13,6 @@ class MarvinFeedbackGetListProcessor extends modObjectGetListProcessor {
     public $objectType = 'marvin.feedback';
 
     public function prepareQueryBeforeCount(xPDOQuery $c) {
-
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where(array(
@@ -31,6 +30,18 @@ class MarvinFeedbackGetListProcessor extends modObjectGetListProcessor {
         $c->where(array('deleted' => 0));
 
         return $c;
+    }
+
+    public function prepareRow(xPDOObject $object){
+        $objectArray = $object->toArray();
+        
+        /** @var modUser $updatedBy */
+        $updatedBy = $object->getOne('UpdatedBy');
+        if ($updatedBy) {
+            $objectArray['updated_by_name'] = $updatedBy->Profile->fullname;
+        }
+
+        return $objectArray;
     }
 }
 return 'MarvinFeedbackGetListProcessor';
