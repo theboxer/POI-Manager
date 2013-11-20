@@ -36,6 +36,7 @@ Marvin.grid.Feedback = function(config) {
             header: _('marvin.feedback.state')
             ,dataIndex: 'state'
             ,width: 100
+            ,renderer: Marvin.renderers.state.createDelegate(this, ['feedback'], true)
         }]
         ,tbar: ['->',{
             xtype: 'textfield'

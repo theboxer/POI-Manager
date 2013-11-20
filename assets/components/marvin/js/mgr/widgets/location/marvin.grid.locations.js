@@ -7,7 +7,7 @@ Marvin.grid.Locations = function(config) {
         ,baseParams: {
             action: 'mgr/location/getlist'
         }
-        ,fields: ['id','name','alias']
+        ,fields: ['id','name','alias', 'state']
         ,autoHeight: true
         ,paging: true
         ,remoteSort: true
@@ -23,6 +23,11 @@ Marvin.grid.Locations = function(config) {
             header: _('marvin.location.alias')
             ,dataIndex: 'alias'
             ,width: 100
+        },{
+            header: _('marvin.location.state')
+            ,dataIndex: 'state'
+            ,width: 100
+            ,renderer: Marvin.renderers.state.createDelegate(this, ['location'], true)
         }]
         ,tbar: [{
             text: _('marvin.location.create')
