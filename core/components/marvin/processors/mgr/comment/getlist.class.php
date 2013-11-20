@@ -1,16 +1,16 @@
 <?php
 /**
- * Get list of Feedback
+ * Get list of Comment
  *
  * @package marvin
- * @subpackage processors.feedback
+ * @subpackage processors.comment
  */
-class MarvinFeedbackGetListProcessor extends modObjectGetListProcessor {
-    public $classKey = 'MarvinFeedback';
+class MarvinCommentGetListProcessor extends modObjectGetListProcessor {
+    public $classKey = 'MarvinComment';
     public $languageTopics = array('marvin:default');
     public $defaultSortField = 'created';
     public $defaultSortDirection = 'DESC';
-    public $objectType = 'marvin.feedback';
+    public $objectType = 'marvin.comment';
 
     public function prepareQueryBeforeCount(xPDOQuery $c) {
         $query = $this->getProperty('query');
@@ -44,4 +44,4 @@ class MarvinFeedbackGetListProcessor extends modObjectGetListProcessor {
         return $objectArray;
     }
 }
-return 'MarvinFeedbackGetListProcessor';
+return 'MarvinCommentGetListProcessor';

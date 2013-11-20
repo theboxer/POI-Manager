@@ -143,6 +143,8 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                 title: _('marvin.location.photos')
             },{
                 title: _('marvin.location.comments')
+                ,items: this.getCommentTab(config)
+                ,border: true
             },{
                 title: _('marvin.feedback')
                 ,items: this.getFeedbackTab(config)
@@ -374,6 +376,17 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
 
         fields.push({
             xtype: 'marvin-grid-feedback'
+            ,cls: 'main-wrapper'
+        });
+
+        return fields;
+    }
+
+    ,getCommentTab: function(config) {
+        var fields = [];
+
+        fields.push({
+            xtype: 'marvin-grid-comment'
             ,cls: 'main-wrapper'
         });
 

@@ -21,6 +21,8 @@ class MarvinLocationUpdateManagerController extends MarvinBaseManagerController 
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/location/marvin.panel.location.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/feedback/marvin.grid.feedback.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/feedback/marvin.window.feedback.js');
+        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/comment/marvin.grid.comment.js');
+        $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/comment/marvin.window.comment.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/sections/location/create.js');
     }
     public function getTemplateFile() { return $this->marvin->config['templatesPath'].'location/location.tpl'; }

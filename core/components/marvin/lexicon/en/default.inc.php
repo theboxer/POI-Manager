@@ -61,8 +61,21 @@ $_lang['marvin.feedback.state_solved'] = 'Solved';
 $_lang['marvin.feedback.review'] = 'Review feedback';
 $_lang['marvin.feedback.delete'] = 'Delete feedback';
 $_lang['marvin.feedback.delete_confirm'] = 'Are you sure, that you want to delete this Feedback?';
-$_lang['marvin.feedback.close'] = 'Close';
 
+//Comment
+$_lang['marvin.comment'] = 'Comment';
+$_lang['marvin.comment.text'] = 'Text';
+$_lang['marvin.comment.authors_name'] = 'Author\'s name';
+$_lang['marvin.comment.authors_email'] = 'Author\'s email';
+$_lang['marvin.comment.created'] = 'Created';
+$_lang['marvin.comment.state'] = 'State';
+$_lang['marvin.comment.state_unapproved'] = 'Unapproved';
+$_lang['marvin.comment.state_approved'] = 'Approved';
+$_lang['marvin.comment.state_solved'] = 'Solved';
+$_lang['marvin.comment.review'] = 'Review comment';
+$_lang['marvin.comment.delete'] = 'Delete comment';
+$_lang['marvin.comment.delete_confirm'] = 'Are you sure, that you want to delete this Comment?';
 
+// Errors
 $_lang['marvin.location.err_ns_name'] = 'Name is a required field. Please specify Location\'s name.';
 $_lang['marvin.location.err_ns_category'] = 'Category is a required field. Please specify at least one Category.';

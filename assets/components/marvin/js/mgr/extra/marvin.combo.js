@@ -52,6 +52,32 @@ Marvin.combo.FeedbackState = function(config) {
 Ext.extend(Marvin.combo.FeedbackState,MODx.combo.ComboBox);
 Ext.reg('marvin-combo-feedback-state',Marvin.combo.FeedbackState);
 
+Marvin.combo.CommentState = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        store: new Ext.data.SimpleStore({
+            fields: ['d','v']
+            ,data: [
+                [_('marvin.comment.state_unapproved'), 'unapproved']
+                ,[_('marvin.comment.state_approved'), 'approved']
+            ]
+        })
+        ,displayField: 'd'
+        ,valueField: 'v'
+        ,value: 'new'
+        ,mode: 'local'
+        ,triggerAction: 'all'
+        ,editable: false
+        ,selectOnFocus: false
+        ,preventRender: true
+        ,forceSelection: true
+        ,enableKeyEvents: true
+    });
+    Marvin.combo.CommentState.superclass.constructor.call(this,config);
+};
+Ext.extend(Marvin.combo.CommentState,MODx.combo.ComboBox);
+Ext.reg('marvin-combo-comment-state',Marvin.combo.CommentState);
+
 Marvin.combo.LocationCategory = function(config, getStore) {
     config = config || {};
     Ext.applyIf(config,{
