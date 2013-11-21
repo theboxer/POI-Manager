@@ -104,6 +104,10 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                             mapPanel.on('mapready', function() {
                                 mapPanel.setZoom(r.object.zoom);
                                 mapPanel.setMarkerPosition(r.object.lat, r.object.lng);
+
+                                if (mapPanel.marker) {
+                                    mapPanel.gmap.setCenter(mapPanel.marker.getPosition());
+                                }
                             });
 
                             this.fireEvent('ready', r.object);
