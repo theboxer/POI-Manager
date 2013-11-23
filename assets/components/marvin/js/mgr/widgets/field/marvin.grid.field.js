@@ -12,6 +12,8 @@ Marvin.grid.Field = function(config) {
         ,autoHeight: true
         ,paging: true
         ,remoteSort: true
+        ,autosave: true
+        ,save_action: 'mgr/field/updatefromgrid'
         ,columns: [{
             header: _('id')
             ,dataIndex: 'id'
@@ -21,26 +23,32 @@ Marvin.grid.Field = function(config) {
             header: _('marvin.field.name')
             ,dataIndex: 'name'
             ,width: 50
+            ,editor: {xtype: 'textfield'}
         },{
             header: _('marvin.field.type')
             ,dataIndex: 'type'
             ,width: 50
+            ,editor: {xtype: 'marvin-combo-field-type', renderer: true}
         },{
             header: _('marvin.field.default')
             ,dataIndex: 'default'
             ,width: 50
+            ,editor: {xtype: 'textfield'}
         },{
             header: _('marvin.field.required')
             ,dataIndex: 'required'
             ,width: 50
+            ,editor: {xtype: 'combo-boolean', renderer: 'boolean' }
         },{
             header: _('marvin.field.read_only')
             ,dataIndex: 'read_only'
             ,width: 50
+            ,editor: {xtype: 'combo-boolean', renderer: 'boolean' }
         },{
             header: _('marvin.field.position')
             ,dataIndex: 'position'
             ,width: 50
+            ,editor: {xtype: 'numberfield', allowNegative: false, allowDecimals: false}
         }]
         ,tbar: [{
             text: _('marvin.field.create')
