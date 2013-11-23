@@ -1,0 +1,1 @@
+<div id="marvin-panel-location-type-div"></div>

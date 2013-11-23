@@ -76,6 +76,39 @@ $_lang['marvin.comment.review'] = 'Review comment';
 $_lang['marvin.comment.delete'] = 'Delete comment';
 $_lang['marvin.comment.delete_confirm'] = 'Are you sure, that you want to delete this Comment?';
 
+//LocationType
+$_lang['marvin.locationtype.menu'] = 'Location types';
+$_lang['marvin.locationtype.menu_desc'] = 'Create a new type for Locations';
+$_lang['marvin.locationtype.list_desc'] = 'Manage Location\'s types here.';
+$_lang['marvin.locationtype.name'] = 'Name';
+$_lang['marvin.locationtype.description'] = 'Description';
+$_lang['marvin.locationtype.create'] = 'Create a new Location type';
+$_lang['marvin.locationtype.manage_fields'] = 'Manage fields for this type';
+$_lang['marvin.locationtype.save_before_manage_fields'] = 'Please save Location type before adding fields.';
+$_lang['marvin.locationtype.update'] = 'Update Location type';
+$_lang['marvin.locationtype.delete'] = 'Delete Location type';
+$_lang['marvin.locationtype.delete_confirm'] = 'Are you sure, that you want to delete this Location type?';
+$_lang['marvin.locationtype.created'] = 'Created';
+$_lang['marvin.locationtype.updated'] = 'Updated';
+$_lang['marvin.locationtype.updated_by'] = 'Updated By';
+
+//Field
+$_lang['marvin.field.name'] = 'Name';
+$_lang['marvin.field.type'] = 'Type';
+$_lang['marvin.field.default'] = 'Default value';
+$_lang['marvin.field.required'] = 'Required';
+$_lang['marvin.field.read_only'] = 'Read only';
+$_lang['marvin.field.position'] = 'Order';
+$_lang['marvin.field.create'] = 'Add a new Field';
+$_lang['marvin.field.update'] = 'Update Field';
+$_lang['marvin.field.delete'] = 'Delete Field';
+$_lang['marvin.field.delete_confirm'] = 'Are you sure, that you want to delete this Field?';
+$_lang['marvin.field.type_textfield'] = 'Text field';
+$_lang['marvin.field.type_textarea'] = 'Text area';
+
 // Errors
 $_lang['marvin.location.err_ns_name'] = 'Name is a required field. Please specify Location\'s name.';
 $_lang['marvin.location.err_ns_category'] = 'Category is a required field. Please specify at least one Category.';
+$_lang['marvin.locationtype.err_ns_name'] = 'Name is a required field. Please specify Location type\'s name.';
+$_lang['marvin.locationtype.err_ae_name'] = 'Location type with this name already exists.';
+$_lang['marvin.field.err_ns_location_type'] = 'Location type ID is not specified.';

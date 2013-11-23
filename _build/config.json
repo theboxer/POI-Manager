@@ -8,6 +8,15 @@
         "actions": [{
             "id": 1
             ,"controller": "location"
+        },{
+            "id": 2
+            ,"controller": "locationtype"
+        }]
+        ,"menus": [{
+            "text": "marvin.locationtype.menu"
+            ,"description": "marvin.locationtype.menu_desc"
+            ,"action": 2
+            ,"parent": "components"
         }]
         ,"systemSettings": [{
             "key": "default_zoom"

@@ -11,9 +11,6 @@ class MarvinLocationGetProcessor extends modObjectGetProcessor
     public $object;
 
     public function beforeOutput() {
-
-
-
         $categories = $this->object->getMany('LocationCategories');
         $categoryOutput = array();
         foreach($categories as $category){

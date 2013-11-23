@@ -10,3 +10,7 @@
     opacity: 1;
     filter: alpha(opacity=100);
 }
+
+.info-desc {
+    background-color: #C8E5FF;
+}

@@ -36,11 +36,13 @@ class MarvinLocationCreateProcessor extends modObjectCreateProcessor {
 
         $this->setProperty('created', time());
 
-        return parent::beforeSave();
+        return parent::beforeSet();
     }
 
     public function afterSave() {
         $this->object->addCategories($this->categories);
+
+        return parent::afterSave();
     }
 
 }

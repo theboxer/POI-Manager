@@ -118,3 +118,29 @@ Marvin.combo.LocationCategory = function(config, getStore) {
 };
 Ext.extend(Marvin.combo.LocationCategory,Ext.ux.form.SuperBoxSelect);
 Ext.reg('marvin-combo-location-category',Marvin.combo.LocationCategory);
+
+Marvin.combo.FieldType = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        store: new Ext.data.SimpleStore({
+            fields: ['d','v']
+            ,data: [
+                [_('marvin.field.type_textfield'), 'textfield']
+                ,[_('marvin.field.type_textarea'), 'textarea']
+            ]
+        })
+        ,displayField: 'd'
+        ,valueField: 'v'
+        ,value: 'new'
+        ,mode: 'local'
+        ,triggerAction: 'all'
+        ,editable: false
+        ,selectOnFocus: false
+        ,preventRender: true
+        ,forceSelection: true
+        ,enableKeyEvents: true
+    });
+    Marvin.combo.FieldType.superclass.constructor.call(this,config);
+};
+Ext.extend(Marvin.combo.FieldType,MODx.combo.ComboBox);
+Ext.reg('marvin-combo-field-type',Marvin.combo.FieldType);

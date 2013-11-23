@@ -43,6 +43,8 @@ class MarvinLocationUpdateProcessor extends modObjectUpdateProcessor {
 
     public function afterSave(){
         $this->object->addCategories($this->categories);
+
+        return parent::afterSave();
     }
 
 }

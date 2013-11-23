@@ -99,7 +99,7 @@
         <field key="default" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
         <field key="required" dbtype="tinyint" precision="1" phptype="integer" attributes="unsigned" null="false" default="0" />
         <field key="read_only" dbtype="tinyint" precision="1" phptype="integer" attributes="unsigned" null="false" default="0" />
-        <field key="order" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+        <field key="position" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
         <field key="location_type" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
 
         <aggregate alias="LocationType" class="MarvinLocationType" local="location_type" foreign="id" owner="foreign" cardinality="one" />

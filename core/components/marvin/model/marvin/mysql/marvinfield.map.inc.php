@@ -14,7 +14,7 @@ $xpdo_meta_map['MarvinField']= array (
     'default' => '',
     'required' => 0,
     'read_only' => 0,
-    'order' => 0,
+    'position' => 0,
     'location_type' => 0,
   ),
   'fieldMeta' => 
@@ -60,7 +60,7 @@ $xpdo_meta_map['MarvinField']= array (
       'null' => false,
       'default' => 0,
     ),
-    'order' => 
+    'position' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',

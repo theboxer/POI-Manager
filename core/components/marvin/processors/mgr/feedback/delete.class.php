@@ -1,7 +1,7 @@
 <?php
 require_once dirname(dirname(__FILE__)) . '/modobjectsoftremoveprocessor.php';
 /**
- * Remove an Feedback.
+ * Remove a Feedback.
  * 
  * @package marvin
  * @subpackage processors.feedback

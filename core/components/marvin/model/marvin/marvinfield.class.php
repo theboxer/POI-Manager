@@ -6,7 +6,7 @@ require_once 'marvinsimpleobject.class.php';
  * @property string $default
  * @property int $required
  * @property int $read_only
- * @property int $order
+ * @property int $position
  * @property int $location_type
  * @property MarvinLocationType $LocationType
  * @property MarvinLocation $Locations
