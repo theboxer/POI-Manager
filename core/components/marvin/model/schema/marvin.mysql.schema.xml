@@ -88,6 +88,7 @@
     <object class="MarvinLocationType" table="marvin_location_types" extends="MarvinSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" />
         <field key="description" dbtype="text" phptype="string" null="false" default="" />
+        <field key="default" dbtype="tinyint" precision="1" phptype="integer" null="false" default="0" />
 
         <composite alias="Locations" class="MarvinLocation" local="id" foreign="type" cardinality="many" owner="local" />
         <composite alias="Fields" class="MarvinField" local="id" foreign="location_type" cardinality="many" owner="local" />
@@ -108,7 +109,7 @@
         <composite alias="Values" class="MarvinFieldValue" local="id" foreign="field" cardinality="many" owner="local" />
     </object>
 
-    <object class="MarvinFieldValue" table="marvin_field_values" extends="MarvinSimpleObject">
+    <object class="MarvinFieldValue" table="marvin_field_values" extends="xPDOSimpleObject">
         <field key="value" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
         <field key="location" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
         <field key="field" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />

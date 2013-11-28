@@ -144,3 +144,22 @@ Marvin.combo.FieldType = function(config) {
 };
 Ext.extend(Marvin.combo.FieldType,MODx.combo.ComboBox);
 Ext.reg('marvin-combo-field-type',Marvin.combo.FieldType);
+
+Marvin.combo.LocationType = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        name: 'locationtype'
+        ,hiddenName: 'locationtype'
+        ,displayField: 'name'
+        ,valueField: 'id'
+        ,fields: ['name','id']
+        ,pageSize: 20
+        ,url: Marvin.config.connectorUrl
+        ,baseParams:{
+            action: 'mgr/locationtype/getlist'
+        }
+    });
+    Marvin.combo.LocationType.superclass.constructor.call(this,config);
+};
+Ext.extend(Marvin.combo.LocationType,MODx.combo.ComboBox);
+Ext.reg('marvin-combo-location-type',Marvin.combo.LocationType);

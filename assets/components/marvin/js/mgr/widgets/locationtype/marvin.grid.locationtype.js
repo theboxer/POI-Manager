@@ -7,7 +7,7 @@ Marvin.grid.LocationType = function(config) {
         ,baseParams: {
             action: 'mgr/locationtype/getlist'
         }
-        ,fields: ['id','name','description', 'created', 'updated', 'updated_by', 'updated_by_name', 'deleted']
+        ,fields: ['id','name','description', 'default', 'created', 'updated', 'updated_by', 'updated_by_name', 'deleted']
         ,autoHeight: true
         ,paging: true
         ,remoteSort: true
@@ -24,6 +24,11 @@ Marvin.grid.LocationType = function(config) {
             header: _('marvin.locationtype.description')
             ,dataIndex: 'description'
             ,width: 100
+        },{
+            header: _('marvin.locationtype.default')
+            ,dataIndex: 'default'
+            ,width: 100
+            ,renderer: this.rendYesNo
         }]
         ,tbar: [{
             text: _('marvin.locationtype.create')

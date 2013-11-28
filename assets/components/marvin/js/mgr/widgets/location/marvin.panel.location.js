@@ -41,6 +41,7 @@ Marvin.panel.Location = function(config) {
 };
 
 Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
+
     setup: function() {
 //        this.getForm().setValues({email: MODx.user.email, phone: MODx.user.phone, parent: MODx.request.parent});
         var c = Ext.getCmp('marvin-panel-location-categories');
@@ -101,6 +102,8 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                         fn: function(r) {
                             this.getForm().setValues(r.object);
 
+                            this.customFields = r.object.fields;
+
                             mapPanel.on('mapready', function() {
                                 mapPanel.setZoom(r.object.zoom);
                                 mapPanel.setMarkerPosition(r.object.lat, r.object.lng);
@@ -157,6 +160,68 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
         }
 
         return tabs;
+    }
+
+    ,getCustomFields: function(config) {
+        var items = [];
+
+        Ext.each(Marvin.customFields, function(item, index) {
+            items.push({
+                xtype: item.type
+                ,fieldLabel: item.name
+                ,value: item.value
+                ,name: 'custom-' + item.id
+                ,allowBlank: !item.required
+                ,disabled: item.read_only
+            });
+        });
+
+        var customItems = [{
+            deferredRender: false
+            ,border: true
+            ,defaults: {
+                autoHeight: true
+                ,layout: 'form'
+                ,labelWidth: 150
+                ,bodyCssClass: 'main-wrapper'
+                ,layoutOnTabChange: true
+            }
+            ,items: [{
+                defaults: {
+                    msgTarget: 'side'
+                    ,autoHeight: true
+                }
+                ,cls: 'form-with-labels'
+                ,border: false
+                ,items: [{
+                    layout: 'column'
+                    ,border: false
+                    ,height: 100
+                    ,defaults: {
+                        layout: 'form'
+                        ,labelAlign: 'top'
+                        ,labelSeparator: ''
+                        ,anchor: '100%'
+                        ,border: false
+                    }
+                    ,items: [{
+                        columnWidth: 1
+                        ,border: false
+                        ,defaults: {
+                            msgTarget: 'under'
+                        }
+                        ,items: items
+                    }]
+                }]
+            }]
+        }];
+
+        if (items.length > 0) {
+            return customItems;
+        } else {
+            return [];
+        }
+
     }
 
     ,getLocationTab: function(config){
@@ -223,6 +288,21 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                             msgTarget: 'under'
                         }
                         ,items: [{
+                            xtype: 'marvin-combo-location-type'
+                            ,fieldLabel: _('marvin.location.locationtype')
+                            ,name: 'type'
+                            ,hiddenName: 'type'
+                            ,id: this.ident +'-type'
+                            ,itemCls: 'required'
+                            ,anchor: '100%'
+                            ,disabled: config.isUpdate
+                            ,value: Marvin.locationType
+                            ,listeners: {
+                                'select': function(combo, record) {
+                                    MODx.loadPage(MODx.action['marvin:location'], 'parent=' + MODx.request.parent + '&type=' + record.id);
+                                }
+                            }
+                        },{
                             xtype: 'marvin-combo-location-category'
                             ,fieldLabel: _('marvin.location.category')
                             ,name: 'fake_categories'
@@ -230,6 +310,7 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                             ,id: this.ident +'-categories'
                             ,itemCls: 'required'
                             ,anchor: '100%'
+                            ,value: config.isUpdate ? '' : MODx.request.parent
                         }]
                     },{
                         columnWidth: 0.20
@@ -247,10 +328,7 @@ Ext.extend(Marvin.panel.Location, MODx.FormPanel,{
                     }]
                 }]
             }]
-        },{
-            html: '<br />'
-//          @TODO: add style to remvoe left&right border and add same bg color as ouside of panel
-        },{
+        },this.getCustomFields(config),{
             deferredRender: false
             ,border: true
             ,defaults: {

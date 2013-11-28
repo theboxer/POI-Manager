@@ -1,5 +1,4 @@
 <?php
-require_once 'marvinsimpleobject.class.php';
 /**
  * @property string $value
  * @property int $location
@@ -9,4 +8,4 @@ require_once 'marvinsimpleobject.class.php';
  *
  * @package marvin
  */
-class MarvinFieldValue extends MarvinSimpleObject {}
+class MarvinFieldValue extends xPDOSimpleObject {}

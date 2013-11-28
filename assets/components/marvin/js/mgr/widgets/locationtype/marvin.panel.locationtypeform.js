@@ -109,7 +109,7 @@ Ext.extend(Marvin.panel.LocationTypeForm, MODx.FormPanel, {
                             ,allowBlank: false
                         }]
                     },{
-                        columnWidth: 0.7
+                        columnWidth: 0.6
                         ,border: false
                         ,defaults: {
                             msgTarget: 'under'
@@ -120,6 +120,21 @@ Ext.extend(Marvin.panel.LocationTypeForm, MODx.FormPanel, {
                             ,name: 'description'
                             ,id: this.ident +'-description'
                             ,anchor: '100%'
+                        }]
+                    },{
+                        columnWidth: 0.1
+                        ,border: false
+                        ,defaults: {
+                            msgTarget: 'under'
+                        }
+                        ,items: [{
+                            xtype: 'xcheckbox'
+                            ,fieldLabel: _('marvin.locationtype.default')
+                            ,hiddenName: 'default'
+                            ,name: 'default'
+                            ,id: this.ident +'-default'
+                            ,anchor: '100%'
+                            ,value: 0
                         }]
                     }]
                 },this.getUpdateInfoFields(config)]

@@ -24,6 +24,45 @@ class MarvinLocationUpdateManagerController extends MarvinBaseManagerController 
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/comment/marvin.grid.comment.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/comment/marvin.window.comment.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/sections/location/create.js');
+
+        /** @var MarvinLocation $location */
+        $location = $this->modx->getObject('MarvinLocation',$this->scriptProperties['id']);
+        if (empty($location)) {
+            return $this->modx->lexicon('marvin.field.err_ns_location');
+        }
+
+        $c = $this->modx->newQuery('MarvinField');
+        $c->where(array('location_type' => $location->type));
+        $c->sortby('position', 'ASC');
+
+        $fields = $this->modx->getCollection('MarvinField', $c);
+
+        $fieldsArray = array();
+
+        /** @var MarvinField $field */
+        foreach ($fields as $field) {
+            $fArray = $field->toArray();
+
+            $value = $field->getMany('Values', array('location' => $this->scriptProperties['id']));
+            if (count($value) == 1) {
+                foreach($value as $v){
+                    $fArray['value'] = $v->value;
+                    break;
+                }
+            } else {
+                $fArray['value'] = '';
+            }
+
+            $fieldsArray[] = $fArray;
+        }
+
+        $this->addHtml('
+        <script type="text/javascript">
+        // <![CDATA[
+        Marvin.customFields = '.$this->modx->toJSON($fieldsArray).';
+        Marvin.locationType = '.$location->type.';
+        // ]]>
+        </script>');
     }
     public function getTemplateFile() { return $this->marvin->config['templatesPath'].'location/location.tpl'; }
 }

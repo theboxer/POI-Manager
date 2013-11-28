@@ -6,7 +6,7 @@ $xpdo_meta_map['MarvinFieldValue']= array (
   'package' => 'marvin',
   'version' => NULL,
   'table' => 'marvin_field_values',
-  'extends' => 'MarvinSimpleObject',
+  'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
     'value' => '',

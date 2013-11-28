@@ -47,6 +47,7 @@ $_lang['marvin.location.updated'] = 'Updated';
 $_lang['marvin.location.location'] = 'Location';
 $_lang['marvin.location.comments'] = 'Comments';
 $_lang['marvin.location.photos'] = 'Photos';
+$_lang['marvin.location.locationtype'] = 'Location type';
 
 //Feedback
 $_lang['marvin.feedback'] = 'Feedback';
@@ -91,6 +92,7 @@ $_lang['marvin.locationtype.delete_confirm'] = 'Are you sure, that you want to d
 $_lang['marvin.locationtype.created'] = 'Created';
 $_lang['marvin.locationtype.updated'] = 'Updated';
 $_lang['marvin.locationtype.updated_by'] = 'Updated By';
+$_lang['marvin.locationtype.default'] = 'Default';
 
 //Field
 $_lang['marvin.field.name'] = 'Name';
@@ -112,3 +114,6 @@ $_lang['marvin.location.err_ns_category'] = 'Category is a required field. Pleas
 $_lang['marvin.locationtype.err_ns_name'] = 'Name is a required field. Please specify Location type\'s name.';
 $_lang['marvin.locationtype.err_ae_name'] = 'Location type with this name already exists.';
 $_lang['marvin.field.err_ns_location_type'] = 'Location type ID is not specified.';
+$_lang['marvin.field.err_ns_location'] = 'Location ID is not specified.';
+$_lang['marvin.location.err_ns_custom'] = 'This field is required.';
+$_lang['marvin.location.err_ns_type'] = 'Type is a required field. Please specify a Location\'s type.';
