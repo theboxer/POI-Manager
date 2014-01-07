@@ -13,7 +13,7 @@ Ext.extend(Marvin.panel.Map,Ext.ux.GMapPanel, {
     setup: function() {
         google.maps.event.addListener(this.gmap, 'rightclick', this.addLatLng.createDelegate(this));
         google.maps.event.addListener(this.gmap, 'zoom_changed', this.updateZoom.createDelegate(this));
-//        google.maps.event.addListener(this.gmap, 'dragend', this.setLatLng.createDelegate(this));
+        google.maps.event.addListener(this.gmap, 'dragend', this.setLatLng.createDelegate(this));
     }
     ,marker: null
 
@@ -55,8 +55,8 @@ Ext.extend(Marvin.panel.Map,Ext.ux.GMapPanel, {
     }
 
     ,setLatLng: function(point) {
-        this.latField.setValue(point.latLng.ob);
-        this.lngField.setValue(point.latLng.pb);
+        this.latField.setValue(point.latLng.nb);
+        this.lngField.setValue(point.latLng.ob);
     }
 });
 Ext.reg('marvin-panel-map',Marvin.panel.Map);
