@@ -77,6 +77,17 @@ $_lang['marvin.comment.review'] = 'Review comment';
 $_lang['marvin.comment.delete'] = 'Delete comment';
 $_lang['marvin.comment.delete_confirm'] = 'Are you sure, that you want to delete this Comment?';
 
+//Photo
+$_lang['marvin.photo'] = 'Photo';
+$_lang['marvin.photo.name'] = 'Name';
+$_lang['marvin.photo.description'] = 'Description';
+$_lang['marvin.photo.file'] = 'File';
+$_lang['marvin.photo.authors_name'] = 'Author\'s name';
+$_lang['marvin.photo.authors_email'] = 'Author\'s email';
+$_lang['marvin.photo.created'] = 'Created';
+$_lang['marvin.photo.delete'] = 'Delete photo';
+$_lang['marvin.photo.delete_confirm'] = 'Are you sure, that you want to delete this Photo?';
+
 //LocationType
 $_lang['marvin.locationtype.menu'] = 'Location types';
 $_lang['marvin.locationtype.menu_desc'] = 'Create a new type for Locations';

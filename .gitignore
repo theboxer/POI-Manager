@@ -4,3 +4,6 @@ config.core.php
 .settings
 nbproject
 .project
+
+assets/components/marvin/photos/*
+!assets/components/marvin/photos/.gitignore
