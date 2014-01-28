@@ -21,20 +21,29 @@ class MarvinLocationCreateManagerController extends MarvinBaseManagerController 
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/widgets/location/marvin.panel.location.js');
         $this->addLastJavascript($this->marvin->config['jsUrl'].'mgr/sections/location/create.js');
 
+        $getDefault = true;
+
         if (isset($this->scriptProperties['type']) && intval($this->scriptProperties['type']) > 0) {
             $type = intval($this->scriptProperties['type']);
-        } else {
+            $t = $this->modx->getObject('MarvinLocationType', array('id' => $type, 'deleted' => 0));
+            if ($t) {
+                $getDefault = false;
+            }
+
+        }
+
+        if ($getDefault === true) {
             /** @var MarvinLocationType $t */
-            $t = $this->modx->getObject('MarvinLocationType', array('default' => 1));
+            $t = $this->modx->getObject('MarvinLocationType', array('default' => 1, 'deleted' => 0));
             if (!$t) {
-                $t = $this->modx->getObject('MarvinLocationType');
+                $t = $this->modx->getObject('MarvinLocationType', array('deleted' => 0));
             }
 
             $type = $t->id;
         }
 
         $c = $this->modx->newQuery('MarvinField');
-        $c->where(array('location_type' => $type));
+        $c->where(array('location_type' => $type, 'deleted' => 0));
         $c->sortby('position', 'ASC');
 
         $fields = $this->modx->getCollection('MarvinField', $c);

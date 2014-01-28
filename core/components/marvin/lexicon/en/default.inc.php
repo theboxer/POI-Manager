@@ -8,29 +8,29 @@
 $_lang['marvin'] = 'Marvin';
 
 // System lexicons
-$_lang['marvin.system.type_name'] = 'Marvin Category';
-$_lang['marvin.system.text_create'] = 'Marvin Category';
-$_lang['marvin.system.text_create_here'] = 'Create a Marvin Category';
-$_lang['marvin.system.new_category'] = 'New Marvin Category';
+$_lang['marvin.system.type_name'] = 'POI Container';
+$_lang['marvin.system.text_create'] = 'POI Container';
+$_lang['marvin.system.text_create_here'] = 'Create a POI Container';
+$_lang['marvin.system.new_category'] = 'New POI Container';
 
 // Global lexicons
 $_lang['marvin.global.search'] = 'Search';
 
 // Categories
-$_lang['marvin.container_new'] = 'New Marvin Category';
+$_lang['marvin.container_new'] = 'New POI Container';
 $_lang['marvin.category.extended_fields'] = 'Extended fields';
-$_lang['marvin.category.color'] = 'Category color';
-$_lang['marvin.category.color_help'] = 'Color of category markers';
-$_lang['marvin.category.locations'] = 'Locations';
+$_lang['marvin.category.color'] = 'Container color';
+$_lang['marvin.category.color_help'] = 'Color for POIs in this Container';
+$_lang['marvin.category.locations'] = 'POIs';
 
 //Locations
-$_lang['marvin.location.create'] = 'Create Location';
-$_lang['marvin.location.update'] = 'Update Location';
-$_lang['marvin.location.delete'] = 'Delete Location';
-$_lang['marvin.location.delete_confirm'] = 'Are you sure, that you want to delete this Location?';
+$_lang['marvin.location.create'] = 'Create POI';
+$_lang['marvin.location.update'] = 'Update POI';
+$_lang['marvin.location.delete'] = 'Delete POI';
+$_lang['marvin.location.delete_confirm'] = 'Are you sure, that you want to delete this POI?';
 $_lang['marvin.location.alias'] = 'Alias';
-$_lang['marvin.location.create_title'] = 'Create Location';
-$_lang['marvin.location.update_title'] = 'Update Location';
+$_lang['marvin.location.create_title'] = 'Create POI';
+$_lang['marvin.location.update_title'] = 'Update POI';
 $_lang['marvin.location.name'] = 'Name';
 $_lang['marvin.location.alias'] = 'Alias';
 $_lang['marvin.location.state'] = 'State';
@@ -44,10 +44,10 @@ $_lang['marvin.location.zoom'] = 'Zoom';
 $_lang['marvin.location.created'] = 'Created';
 $_lang['marvin.location.updated_by'] = 'Updated By';
 $_lang['marvin.location.updated'] = 'Updated';
-$_lang['marvin.location.location'] = 'Location';
+$_lang['marvin.location.location'] = 'POI';
 $_lang['marvin.location.comments'] = 'Comments';
 $_lang['marvin.location.photos'] = 'Photos';
-$_lang['marvin.location.locationtype'] = 'Location type';
+$_lang['marvin.location.locationtype'] = 'POI type';
 
 //Feedback
 $_lang['marvin.feedback'] = 'Feedback';
@@ -89,17 +89,17 @@ $_lang['marvin.photo.delete'] = 'Delete photo';
 $_lang['marvin.photo.delete_confirm'] = 'Are you sure, that you want to delete this Photo?';
 
 //LocationType
-$_lang['marvin.locationtype.menu'] = 'Location types';
-$_lang['marvin.locationtype.menu_desc'] = 'Create a new type for Locations';
-$_lang['marvin.locationtype.list_desc'] = 'Manage Location\'s types here.';
+$_lang['marvin.locationtype.menu'] = 'POI types';
+$_lang['marvin.locationtype.menu_desc'] = 'Create a new type for POIs';
+$_lang['marvin.locationtype.list_desc'] = 'Manage POI\'s types here.';
 $_lang['marvin.locationtype.name'] = 'Name';
 $_lang['marvin.locationtype.description'] = 'Description';
-$_lang['marvin.locationtype.create'] = 'Create a new Location type';
+$_lang['marvin.locationtype.create'] = 'Create a new POI type';
 $_lang['marvin.locationtype.manage_fields'] = 'Manage fields for this type';
-$_lang['marvin.locationtype.save_before_manage_fields'] = 'Please save Location type before adding fields.';
-$_lang['marvin.locationtype.update'] = 'Update Location type';
-$_lang['marvin.locationtype.delete'] = 'Delete Location type';
-$_lang['marvin.locationtype.delete_confirm'] = 'Are you sure, that you want to delete this Location type?';
+$_lang['marvin.locationtype.save_before_manage_fields'] = 'Please save POI type before adding fields.';
+$_lang['marvin.locationtype.update'] = 'Update POI type';
+$_lang['marvin.locationtype.delete'] = 'Delete POI type';
+$_lang['marvin.locationtype.delete_confirm'] = 'Are you sure, that you want to delete this POI type?';
 $_lang['marvin.locationtype.created'] = 'Created';
 $_lang['marvin.locationtype.updated'] = 'Updated';
 $_lang['marvin.locationtype.updated_by'] = 'Updated By';
@@ -120,11 +120,11 @@ $_lang['marvin.field.type_textfield'] = 'Text field';
 $_lang['marvin.field.type_textarea'] = 'Text area';
 
 // Errors
-$_lang['marvin.location.err_ns_name'] = 'Name is a required field. Please specify Location\'s name.';
+$_lang['marvin.location.err_ns_name'] = 'Name is a required field. Please specify POI\'s name.';
 $_lang['marvin.location.err_ns_category'] = 'Category is a required field. Please specify at least one Category.';
-$_lang['marvin.locationtype.err_ns_name'] = 'Name is a required field. Please specify Location type\'s name.';
-$_lang['marvin.locationtype.err_ae_name'] = 'Location type with this name already exists.';
-$_lang['marvin.field.err_ns_location_type'] = 'Location type ID is not specified.';
-$_lang['marvin.field.err_ns_location'] = 'Location ID is not specified.';
+$_lang['marvin.locationtype.err_ns_name'] = 'Name is a required field. Please specify POI type\'s name.';
+$_lang['marvin.locationtype.err_ae_name'] = 'POI type with this name already exists.';
+$_lang['marvin.field.err_ns_location_type'] = 'POI type ID is not specified.';
+$_lang['marvin.field.err_ns_location'] = 'POI ID is not specified.';
 $_lang['marvin.location.err_ns_custom'] = 'This field is required.';
-$_lang['marvin.location.err_ns_type'] = 'Type is a required field. Please specify a Location\'s type.';
+$_lang['marvin.location.err_ns_type'] = 'Type is a required field. Please specify a POI\'s type.';

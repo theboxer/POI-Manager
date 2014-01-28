@@ -21,7 +21,7 @@ class MarvinFieldCreateProcessor extends modObjectCreateProcessor {
 
         $position = $this->getProperty('position', null);
         if (empty($position)) {
-            $stmt = $this->modx->query("SELECT MAX(position) as max_position, count(id) as id FROM {$this->modx->getTableName('MarvinField')} WHERE deleted=0");
+            $stmt = $this->modx->query("SELECT MAX(position) as max_position, count(id) as id FROM {$this->modx->getTableName('MarvinField')} WHERE deleted=0 AND location_type={$locationType}");
             $o = $stmt->fetch(PDO::FETCH_OBJ);
             $stmt->closeCursor();
 

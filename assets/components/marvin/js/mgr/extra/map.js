@@ -55,8 +55,8 @@ Ext.extend(Marvin.panel.Map,Ext.ux.GMapPanel, {
     }
 
     ,setLatLng: function(point) {
-        this.latField.setValue(point.latLng.nb);
-        this.lngField.setValue(point.latLng.ob);
+        this.latField.setValue(point.latLng.lat());
+        this.lngField.setValue(point.latLng.lng());
     }
 });
 Ext.reg('marvin-panel-map',Marvin.panel.Map);

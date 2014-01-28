@@ -41,7 +41,7 @@ class MarvinLocationCreateProcessor extends modObjectCreateProcessor {
         }
 
         $type = $this->modx->getObject('MarvinLocationType', $locationType);
-        $fields = $type->getMany('Fields', array('required' => 1));
+        $fields = $type->getMany('Fields', array('required' => 1, 'deleted' => 0));
 
         /** @var MarvinField $field */
         foreach ($fields as $field) {
