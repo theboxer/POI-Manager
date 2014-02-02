@@ -61,6 +61,53 @@ class POIs {
         return $this->createResponse($response, 'success');
     }
 
+    /**
+     * @url GET pois/{id}/comments
+     */
+    public function getComments($id) {
+        if (intval($id) <= 0) throw new RestException(400, "Id field is missing");
+
+        $comments = $this->restler->modx->getCollection('MarvinComment', array('location' => $id));
+
+        $response = array();
+
+        foreach ($comments as $comment) {
+            $response[] = $this->getCommentDetails($comment);
+        }
+
+        return $this->createResponse($response, 'success');
+    }
+
+    /**
+     * @url GET pois/{poi}/comments/{id}
+     * @url GET comments/{id}
+     */
+    public function getComment($id, $poi = 0) {
+        if (intval($id) <= 0) throw new RestException(400, "Id field is missing");
+
+        $c = $this->restler->modx->newQuery('MarvinComment');
+        $c->where(array('id' => $id));
+
+        if (intval($poi) > 0) {
+            $c->where(array('location' => $poi));
+        }
+
+        $comments = $this->restler->modx->getCollection('MarvinComment', $c);
+
+        $response = array();
+
+        foreach ($comments as $comment) {
+            $response[] = $this->getCommentDetails($comment);
+        }
+
+        return $this->createResponse($response, 'success');
+    }
+
+    private function getCommentDetails(MarvinComment $comment){
+        $response = $comment->toArray();
+
+        return $response;
+    }
 
     private function getPOIDetails(MarvinLocation $poi){
         $response = $poi->toArray();
