@@ -63,11 +63,16 @@ class POIs {
 
     /**
      * @url GET pois/{id}/comments
+     * @url GET comments
      */
-    public function getComments($id) {
-        if (intval($id) <= 0) throw new RestException(400, "Id field is missing");
+    public function getComments($id = 0) {
+        $c = $this->restler->modx->newQuery('MarvinComment');
 
-        $comments = $this->restler->modx->getCollection('MarvinComment', array('location' => $id));
+        if (intval($id) > 0) {
+            $c->where(array('location' => $id));
+        }
+
+        $comments = $this->restler->modx->getCollection('MarvinComment', $c);
 
         $response = array();
 
@@ -103,8 +108,61 @@ class POIs {
         return $this->createResponse($response, 'success');
     }
 
+    /**
+     * @url GET pois/{id}/photos
+     * @url GET photos
+     */
+    public function getPhotos($id = 0) {
+        $c = $this->restler->modx->newQuery('MarvinPhoto');
+
+        if (intval($id) > 0) {
+            $c->where(array('location' => $id));
+        }
+
+        $photos = $this->restler->modx->getCollection('MarvinPhoto', $c);
+
+        $response = array();
+
+        foreach ($photos as $photo) {
+            $response[] = $this->getPhotoDetails($photo);
+        }
+
+        return $this->createResponse($response, 'success');
+    }
+
+    /**
+     * @url GET pois/{poi}/photos/{id}
+     * @url GET photos/{id}
+     */
+    public function getPhoto($id, $poi = 0) {
+        if (intval($id) <= 0) throw new RestException(400, "Id field is missing");
+
+        $c = $this->restler->modx->newQuery('MarvinPhoto');
+        $c->where(array('id' => $id));
+
+        if (intval($poi) > 0) {
+            $c->where(array('location' => $poi));
+        }
+
+        $photos = $this->restler->modx->getCollection('MarvinPhoto', $c);
+
+        $response = array();
+
+        foreach ($photos as $photo) {
+            $response[] = $this->getPhotoDetails($photo);
+        }
+
+        return $this->createResponse($response, 'success');
+    }
+
     private function getCommentDetails(MarvinComment $comment){
         $response = $comment->toArray();
+
+        return $response;
+    }
+
+    private function getPhotoDetails(MarvinPhoto $photo){
+        $response = $photo->toArray();
 
         return $response;
     }
