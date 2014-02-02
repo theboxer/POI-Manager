@@ -155,6 +155,59 @@ class POIs {
         return $this->createResponse($response, 'success');
     }
 
+    /**
+     * @url GET pois/{id}/feedbacks
+     * @url GET feedbacks
+     */
+    public function getFeedbacks($id = 0) {
+        $c = $this->restler->modx->newQuery('MarvinFeedback');
+
+        if (intval($id) > 0) {
+            $c->where(array('location' => $id));
+        }
+
+        $feedbacks = $this->restler->modx->getCollection('MarvinFeedback', $c);
+
+        $response = array();
+
+        foreach ($feedbacks as $feedback) {
+            $response[] = $this->getFeedbackDetails($feedback);
+        }
+
+        return $this->createResponse($response, 'success');
+    }
+
+    /**
+     * @url GET pois/{poi}/feedbacks/{id}
+     * @url GET feedbacks/{id}
+     */
+    public function getFeedback($id, $poi = 0) {
+        if (intval($id) <= 0) throw new RestException(400, "Id field is missing");
+
+        $c = $this->restler->modx->newQuery('MarvinFeedback');
+        $c->where(array('id' => $id));
+
+        if (intval($poi) > 0) {
+            $c->where(array('location' => $poi));
+        }
+
+        $feedbacks = $this->restler->modx->getCollection('MarvinFeedback', $c);
+
+        $response = array();
+
+        foreach ($feedbacks as $feedback) {
+            $response[] = $this->getFeedbackDetails($feedback);
+        }
+
+        return $this->createResponse($response, 'success');
+    }
+
+    private function getFeedbackDetails(MarvinFeedback $feedback){
+        $response = $feedback->toArray();
+
+        return $response;
+    }
+
     private function getCommentDetails(MarvinComment $comment){
         $response = $comment->toArray();
 
