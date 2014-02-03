@@ -7,3 +7,7 @@ nbproject
 
 assets/components/marvin/photos/*
 !assets/components/marvin/photos/.gitignore
+
+_packages/*.*
+!_packages/.gitignore
+!_packages/*.zip
