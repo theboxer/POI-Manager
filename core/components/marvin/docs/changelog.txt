@@ -1,5 +1,5 @@
 Changelog for Marvin.
 
-Marvin 0.0.1
+Marvin 0.1.0
 ==============
 - Initial release.

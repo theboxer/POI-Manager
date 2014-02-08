@@ -3,7 +3,7 @@
     ,"lowCaseName": "marvin"
     ,"description": "Platform for managing POIs on map"
     ,"author": "Jan Peca"
-    ,"version": "1.0.0"
+    ,"version": "0.1.0"
     ,"package":{
         "actions": [{
             "id": 1

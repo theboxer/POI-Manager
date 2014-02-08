@@ -10,9 +10,9 @@ $tstart = $tstart[1] + $tstart[0];
 set_time_limit(0);
 
 /* define package names */
-define('PKG_NAME','Marvin');
+define('PKG_NAME','POI Manager');
 define('PKG_NAME_LOWER','marvin');
-define('PKG_VERSION','1.0.0');
+define('PKG_VERSION','0.1.0');
 define('PKG_RELEASE','alpha');
 
 /* define build paths */
@@ -44,8 +44,8 @@ $modx->setLogTarget('ECHO');
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->directory = dirname(dirname(__FILE__)).'/_packages/';
-$builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
-$builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/');
+$builder->createPackage('poimanager',PKG_VERSION,PKG_RELEASE);
+$builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/','{assets_path}components/'.PKG_NAME_LOWER.'/');
 
 /* create category */
 $category= $modx->newObject('modCategory');
